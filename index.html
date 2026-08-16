@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frigate Shipping Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --blue: #0758c9;
+        --navy: #092b55;
+        --text: #10213a;
+        --muted: #64748b;
+        --white: #fff;
+        --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: Inter, Arial, sans-serif;
+        color: var(--text);
+        background: #fff;
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* NAVBAR */
+      .navbar {
+        height: 92px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5.5%;
+        background: rgba(255, 255, 255, 0.96);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        box-shadow: 0 3px 18px rgba(9, 43, 85, 0.06);
+        animation: navIn 0.7s var(--ease) both;
+      }
+      .logo {
+        width: 150px;
+        height: auto;
+        display: block;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 42px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .nav-links a {
+        position: relative;
+        padding: 10px 0;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 0;
+        left: 50%;
+        bottom: 2px;
+        background: var(--blue);
+        transition: 0.35s var(--ease);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+        left: 0;
+      }
+
+      .quote-btn {
+        background: var(--blue);
+        color: #fff;
+        border-radius: 10px;
+        padding: 14px 21px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition:
+          transform 0.3s var(--ease),
+          box-shadow 0.3s;
+        box-shadow: 0 8px 20px rgba(7, 88, 201, 0.2);
+      }
+      .quote-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 13px 28px rgba(7, 88, 201, 0.3);
+      }
+      .arrow {
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #fff;
+        color: var(--blue);
+        transition: transform 0.3s var(--ease);
+      }
+      .quote-btn:hover .arrow {
+        transform: translateX(4px);
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 790px;
+        padding: 92px 6% 70px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(4, 42, 84, 0.94) 0%,
+            rgba(5, 60, 115, 0.76) 44%,
+            rgba(5, 60, 115, 0.4) 100%
+          ),
+          url("PIC/photo-1494412574643-ff11b0a5c1c3\ \(1\).avif") center/cover
+            no-repeat;
+        color: #fff;
+        overflow: hidden;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(4, 43, 82, 0.08),
+          rgba(4, 43, 82, 0.18)
+        );
+        pointer-events: none;
+      }
+      .hero-bg-motion {
+        position: absolute;
+        inset: -3%;
+        background: url("port-background.jpg") center/cover no-repeat;
+        opacity: 0.08;
+        animation: slowZoom 12s ease-in-out infinite alternate;
+        pointer-events: none;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 820px;
+        padding-top: 35px;
+      }
+      .eyebrow,
+      .hero h1,
+      .hero p,
+      .hero-actions,
+      .stats {
+        animation: fadeUp 0.8s var(--ease) both;
+      }
+      .eyebrow {
+        animation-delay: 0.15s;
+      }
+      .hero h1 {
+        animation-delay: 0.3s;
+      }
+      .hero p {
+        animation-delay: 0.45s;
+      }
+      .hero-actions {
+        animation-delay: 0.6s;
+      }
+      .stats {
+        animation-delay: 0.75s;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #6da9ff;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        margin-bottom: 24px;
+        font-size: 17px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 45px;
+        height: 3px;
+        background: #6da9ff;
+      }
+      h1 {
+        font-size: clamp(48px, 6vw, 84px);
+        line-height: 0.98;
+        letter-spacing: -3px;
+        max-width: 850px;
+        margin-bottom: 27px;
+        font-weight: 800;
+      }
+      .hero p {
+        font-size: clamp(18px, 2vw, 23px);
+        line-height: 1.55;
+        max-width: 760px;
+        color: rgba(255, 255, 255, 0.94);
+        margin-bottom: 34px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        min-width: 205px;
+        padding: 16px 24px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 17px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        transition: 0.35s var(--ease);
+      }
+      .btn-primary {
+        background: var(--blue);
+        color: #fff;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+      }
+      .btn-primary:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.24);
+      }
+      .btn-outline {
+        color: #fff;
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .btn-outline:hover {
+        background: #fff;
+        color: var(--navy);
+        transform: translateY(-4px);
+      }
+
+      /* STATS */
+      .stats {
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+        margin-top: 52px;
+        max-width: 820px;
+      }
+      .stat {
+        min-width: 150px;
+        padding: 0 28px;
+        border-right: 1px solid rgba(255, 255, 255, 0.24);
+      }
+      .stat:first-child {
+        padding-left: 0;
+      }
+      .stat:last-child {
+        border-right: 0;
+      }
+      .stat-number {
+        font-size: 31px;
+        font-weight: 800;
+      }
+      .stat-label {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-top: 4px;
+      }
+
+      /* SERVICES STRIP */
+      .services-strip {
+        width: min(92%, 1400px);
+        margin: -38px auto 0;
+        position: relative;
+        z-index: 5;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 15px 45px rgba(12, 40, 75, 0.14);
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        padding: 18px 10px;
+      }
+      .service {
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 10px 15px;
+        border-right: 1px solid #e5eaf0;
+        color: var(--text);
+        font-weight: 600;
+        transition:
+          transform 0.35s var(--ease),
+          color 0.35s;
+        text-align: center;
+      }
+      .service:last-child {
+        border-right: 0;
+      }
+      .service:hover {
+        color: var(--blue);
+        transform: translateY(-5px);
+      }
+      .service-icon {
+        font-size: 28px;
+        color: var(--blue);
+        transition: transform 0.35s var(--ease);
+      }
+      .service:hover .service-icon {
+        transform: translateY(-4px) scale(1.08);
+      }
+
+      /* ABOUT */
+      .section {
+        padding: 110px 7%;
+        text-align: center;
+      }
+      .section-tag {
+        color: var(--blue);
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+      }
+      .section h2 {
+        font-size: clamp(34px, 4vw, 52px);
+        line-height: 1.1;
+        margin-bottom: 18px;
+      }
+      .section p {
+        max-width: 720px;
+        margin: auto;
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 17px;
+      }
+
+      /* SCROLL REVEAL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(35px);
+        transition:
+          opacity 0.8s var(--ease),
+          transform 0.8s var(--ease);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* FOOTER */
+      footer {
+        background: #071e3b;
+        color: #fff;
+        padding: 45px 7%;
+        text-align: center;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      @keyframes navIn {
+        from {
+          opacity: 0;
+          transform: translateY(-15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slowZoom {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.06);
+        }
+      }
+
+      @media (max-width: 950px) {
+        .nav-links {
+          gap: 18px;
+        }
+        .services-strip {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .service:nth-child(3) {
+          border-right: 0;
+        }
+        .service:nth-child(n + 4) {
+          border-top: 1px solid #e5eaf0;
+        }
+      }
+      @media (max-width: 720px) {
+        .navbar {
+          height: 76px;
+          padding: 0 5%;
+        }
+        .logo {
+          width: 112px;
+        }
+        .nav-links a {
+          display: none;
+        }
+        .quote-btn {
+          padding: 10px 13px;
+          font-size: 13px;
+        }
+        .hero {
+          min-height: 750px;
+          padding: 76px 7% 55px;
+        }
+        h1 {
+          font-size: clamp(44px, 13vw, 65px);
+          letter-spacing: -2px;
+        }
+        .hero p {
+          font-size: 17px;
+        }
+        .stats {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 25px 0;
+        }
+        .stat {
+          border-right: 0;
+          padding: 0 15px 0 0;
+        }
+        .services-strip {
+          grid-template-columns: repeat(2, 1fr);
+          width: 92%;
+        }
+        .service:nth-child(odd) {
+          border-right: 1px solid #e5eaf0;
+        }
+        .service:nth-child(even) {
+          border-right: 0;
+        }
+        .service:nth-child(n + 3) {
+          border-top: 1px solid #e5eaf0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="navbar">
+      <a href="#" aria-label="Frigate Shipping Group">
+        <img class="logo" src="logo.png" alt="Frigate Shipping Group logo" />
+      </a>
+
+      <nav class="nav-links">
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#values">Vision & Values</a>
+        <a href="#contact">Contact Us</a>
+        <a class="quote-btn" href="#contact">
+          Get a Call <span class="arrow">→</span>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-bg-motion"></div>
+        <div class="hero-content">
+          <div class="eyebrow">GLOBAL REACH. LOCAL COMMITMENT.</div>
+          <h1>FRIGATE<br />SHIPPING GROUP</h1>
+          <p>
+            Professional freight and logistics solutions connecting your
+            business to global markets.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#services"
+              >Explore Our Services <span class="arrow">→</span></a
+            >
+            <a class="btn btn-outline" href="#contact"
+              >Contact Us <span class="arrow">→</span></a
+            >
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-number" data-target="20">0+</div>
+              <div class="stat-label">Countries</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" data-target="500">0+</div>
+              <div class="stat-label">Shipments</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" data-target="10">0+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Secure & Reliable</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="services-strip reveal">
+        <a class="service" href="#"
+          ><span class="service-icon">⚓</span
+          ><span>Sea Freight<br />Solutions</span></a
+        >
+        <a class="service" href="#"
+          ><span class="service-icon">✈</span
+          ><span>Air Freight<br />Solutions</span></a
+        >
+        <a class="service" href="#"
+          ><span class="service-icon">▣</span
+          ><span>Land Freight<br />Solutions</span></a
+        >
+        <a class="service" href="#"
+          ><span class="service-icon">⌂</span
+          ><span>Warehousing &<br />Distribution</span></a
+        >
+        <a class="service" href="#"
+          ><span class="service-icon">✓</span
+          ><span>Customs Clearance<br />& Compliance</span></a
+        >
+        <a class="service" href="#"
+          ><span class="service-icon">↗</span
+          ><span>Supply Chain<br />Management</span></a
+        >
+      </section>
+
+    <script>
+      // Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.14 },
+      );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      // Counter animation
+      const counters = document.querySelectorAll(".stat-number[data-target]");
+      let counted = false;
+
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          if (!entries[0].isIntersecting || counted) return;
+          counted = true;
+
+          counters.forEach((counter) => {
+            const target = Number(counter.dataset.target);
+            const duration = 1300;
+            const start = performance.now();
+
+            function tick(now) {
+              const progress = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              counter.textContent = Math.floor(target * eased) + "+";
+              if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+          });
+        },
+        { threshold: 0.7 },
+      );
+
+      if (counters.length)
+        statsObserver.observe(document.querySelector(".stats"));
+    </script>
+  </body>
+</html>
