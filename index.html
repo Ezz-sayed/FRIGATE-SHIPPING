@@ -1,0 +1,11571 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frigate Shipping Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+      :root {
+        --blue: #0758c9;
+        --navy: #092b55;
+        --text: #10213a;
+        --muted: #64748b;
+        --white: #fff;
+        --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: Inter, Arial, sans-serif;
+        color: var(--text);
+        background: #fff;
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* NAVBAR */
+      .navbar {
+        height: 92px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5.5%;
+        background: rgba(255, 255, 255, 0.96);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        box-shadow: 0 3px 18px rgba(9, 43, 85, 0.06);
+        animation: navIn 0.7s var(--ease) both;
+      }
+      .logo {
+        width: 150px;
+        height: auto;
+        display: block;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 42px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .nav-links a {
+        position: relative;
+        padding: 10px 0;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 0;
+        left: 50%;
+        bottom: 2px;
+        background: var(--blue);
+        transition: 0.35s var(--ease);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+        left: 0;
+      }
+
+      .quote-btn {
+        background: var(--blue);
+        color: #fff;
+        border-radius: 10px;
+        padding: 14px 21px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition:
+          transform 0.3s var(--ease),
+          box-shadow 0.3s;
+        box-shadow: 0 8px 20px rgba(7, 88, 201, 0.2);
+      }
+      .quote-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 13px 28px rgba(7, 88, 201, 0.3);
+      }
+      .arrow {
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #fff;
+        color: var(--blue);
+        transition: transform 0.3s var(--ease);
+      }
+      .quote-btn:hover .arrow {
+        transform: translateX(4px);
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 790px;
+        padding: 92px 6% 70px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(4, 42, 84, 0.94) 0%,
+            rgba(5, 60, 115, 0.76) 44%,
+            rgba(5, 60, 115, 0.4) 100%
+          ),
+          url("PIC/photo-1494412574643-ff11b0a5c1c3\ \(1\).avif") center/cover
+            no-repeat;
+        color: #fff;
+        overflow: hidden;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(4, 43, 82, 0.08),
+          rgba(4, 43, 82, 0.18)
+        );
+        pointer-events: none;
+      }
+      .hero-bg-motion {
+        position: absolute;
+        inset: -3%;
+        background: url("port-background.jpg") center/cover no-repeat;
+        opacity: 0.08;
+        animation: slowZoom 12s ease-in-out infinite alternate;
+        pointer-events: none;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 820px;
+        padding-top: 35px;
+      }
+      .eyebrow,
+      .hero h1,
+      .hero p,
+      .hero-actions,
+      .stats {
+        animation: fadeUp 0.8s var(--ease) both;
+      }
+      .eyebrow {
+        animation-delay: 0.15s;
+      }
+      .hero h1 {
+        animation-delay: 0.3s;
+      }
+      .hero p {
+        animation-delay: 0.45s;
+      }
+      .hero-actions {
+        animation-delay: 0.6s;
+      }
+      .stats {
+        animation-delay: 0.75s;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #6da9ff;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        margin-bottom: 24px;
+        font-size: 17px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 45px;
+        height: 3px;
+        background: #6da9ff;
+      }
+      h1 {
+        font-size: clamp(48px, 6vw, 84px);
+        line-height: 0.98;
+        letter-spacing: -3px;
+        max-width: 850px;
+        margin-bottom: 27px;
+        font-weight: 800;
+      }
+      .hero p {
+        font-size: clamp(18px, 2vw, 23px);
+        line-height: 1.55;
+        max-width: 760px;
+        color: rgba(255, 255, 255, 0.94);
+        margin-bottom: 34px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        min-width: 205px;
+        padding: 16px 24px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 17px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        transition: 0.35s var(--ease);
+      }
+      .btn-primary {
+        background: var(--blue);
+        color: #fff;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+      }
+      .btn-primary:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.24);
+      }
+      .btn-outline {
+        color: #fff;
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .btn-outline:hover {
+        background: #fff;
+        color: var(--navy);
+        transform: translateY(-4px);
+      }
+
+      /* STATS */
+      .stats {
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+        margin-top: 52px;
+        max-width: 820px;
+      }
+      .stat {
+        min-width: 150px;
+        padding: 0 28px;
+        border-right: 1px solid rgba(255, 255, 255, 0.24);
+      }
+      .stat:first-child {
+        padding-left: 0;
+      }
+      .stat:last-child {
+        border-right: 0;
+      }
+      .stat-number {
+        font-size: 31px;
+        font-weight: 800;
+      }
+      .stat-label {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-top: 4px;
+      }
+
+      /* SERVICES STRIP */
+      .services-strip {
+        width: min(92%, 1400px);
+        margin: -38px auto 0;
+        position: relative;
+        z-index: 5;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 15px 45px rgba(12, 40, 75, 0.14);
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        padding: 18px 10px;
+      }
+      .service {
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 10px 15px;
+        border-right: 1px solid #e5eaf0;
+        color: var(--text);
+        font-weight: 600;
+        transition:
+          transform 0.35s var(--ease),
+          color 0.35s;
+        text-align: center;
+      }
+      .service:last-child {
+        border-right: 0;
+      }
+      .service:hover {
+        color: var(--blue);
+        transform: translateY(-5px);
+      }
+      .service-icon {
+        font-size: 28px;
+        color: var(--blue);
+        transition: transform 0.35s var(--ease);
+      }
+      .service:hover .service-icon {
+        transform: translateY(-4px) scale(1.08);
+      }
+
+      /* ABOUT */
+      .section {
+        padding: 110px 7%;
+        text-align: center;
+      }
+      .section-tag {
+        color: var(--blue);
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+      }
+      .section h2 {
+        font-size: clamp(34px, 4vw, 52px);
+        line-height: 1.1;
+        margin-bottom: 18px;
+      }
+      .section p {
+        max-width: 720px;
+        margin: auto;
+      color: #3d446f;
+        line-height: 1.8;
+        font-size: 17px;
+      }
+
+      /* SCROLL REVEAL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(35px);
+        transition:
+          opacity 0.8s var(--ease),
+          transform 0.8s var(--ease);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* FOOTER */
+      footer {
+        background: #071e3b;
+        color: #fff;
+        padding: 45px 7%;
+        text-align: center;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      @keyframes navIn {
+        from {
+          opacity: 0;
+          transform: translateY(-15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slowZoom {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.06);
+        }
+      }
+
+      @media (max-width: 950px) {
+        .nav-links {
+          gap: 18px;
+        }
+        .services-strip {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .service:nth-child(3) {
+          border-right: 0;
+        }
+        .service:nth-child(n + 4) {
+          border-top: 1px solid #e5eaf0;
+        }
+      }
+      @media (max-width: 720px) {
+        .navbar {
+          height: 76px;
+          padding: 0 5%;
+        }
+        .logo {
+          width: 112px;
+        }
+        .nav-links a {
+          display: none;
+        }
+        .quote-btn {
+          padding: 10px 13px;
+          font-size: 13px;
+        }
+        .hero {
+          min-height: 750px;
+          padding: 76px 7% 55px;
+        }
+        h1 {
+          font-size: clamp(44px, 13vw, 65px);
+          letter-spacing: -2px;
+        }
+        .hero p {
+          font-size: 17px;
+        }
+        .stats {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 25px 0;
+        }
+        .stat {
+          border-right: 0;
+          padding: 0 15px 0 0;
+        }
+        .services-strip {
+          grid-template-columns: repeat(2, 1fr);
+          width: 92%;
+        }
+        .service:nth-child(odd) {
+          border-right: 1px solid #e5eaf0;
+        }
+        .service:nth-child(even) {
+          border-right: 0;
+        }
+        .service:nth-child(n + 3) {
+          border-top: 1px solid #e5eaf0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =========================================================
+     FRIGATE SHIPPING GROUP
+     ISOLATED WEBSITE PRELOADER
+========================================================= -->
+<style id="fsgx-premium-scrollbar">
+
+/* =========================================
+   FRIGATE SHIPPING — PREMIUM SCROLLBAR
+   ========================================= */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #0878d1 #edf3f9;
+}
+
+/* Chrome / Edge / Safari */
+html::-webkit-scrollbar {
+  width: 11px;
+}
+
+/* المسار */
+html::-webkit-scrollbar-track {
+  background:
+    linear-gradient(
+      90deg,
+      #edf3f9 0%,
+      #f8fbff 50%,
+      #edf3f9 100%
+    );
+
+  border-left: 1px solid rgba(8,120,209,.08);
+}
+
+/* الـ Scroll نفسه */
+html::-webkit-scrollbar-thumb {
+
+  border-radius: 100px;
+
+  border: 3px solid #edf3f9;
+
+  background:
+    linear-gradient(
+      180deg,
+      #36b7ff 0%,
+      #0878d1 35%,
+      #064b88 70%,
+      #0a9bea 100%
+    );
+
+  box-shadow:
+    inset 0 0 5px rgba(255,255,255,.35),
+    0 0 8px rgba(8,120,209,.25);
+}
+
+/* Hover */
+html::-webkit-scrollbar-thumb:hover {
+
+  background:
+    linear-gradient(
+      180deg,
+      #62c8ff 0%,
+      #0b91e5 40%,
+      #07528f 100%
+    );
+
+  box-shadow:
+    inset 0 0 7px rgba(255,255,255,.5),
+    0 0 14px rgba(8,120,209,.45);
+}
+
+
+/* =========================================
+   BODY — يمنع أي scrollbar داخلي عادي
+   ========================================= */
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #0878d1 #edf3f9;
+}
+
+body::-webkit-scrollbar {
+  width: 11px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #edf3f9;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+
+  border: 3px solid #edf3f9;
+
+  background:
+    linear-gradient(
+      180deg,
+      #36b7ff,
+      #0878d1,
+      #064b88
+    );
+
+  box-shadow:
+    inset 0 0 5px rgba(255,255,255,.35),
+    0 0 8px rgba(8,120,209,.25);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+      180deg,
+      #62c8ff,
+      #0878d1,
+      #064b88
+    );
+}
+
+</style>
+<div id="fsgx-loader" class="fsgx-loader">
+
+  <div class="fsgx-loader-inner">
+
+    <!-- Logo / Brand -->
+
+    <div class="fsgx-loader-brand">
+
+      <div class="fsgx-loader-logo-mark">
+
+        <!-- Frigate-style shipping mark -->
+        <svg
+          viewBox="0 0 100 72"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+
+          <path
+            d="M18 50
+               V27
+               H48
+               V34
+               H28
+               V40
+               H45
+               V47
+               H28
+               V50
+               Z"
+            fill="#0758C9"
+          />
+
+          <path
+            d="M49 27
+               H79
+               V50
+               H68
+               V35
+               H49
+               Z"
+            fill="#102A72"
+          />
+
+          <path
+            d="M54 28
+               C46 18 44 9 47 2
+               C53 13 60 17 68 18
+               C64 22 61 26 60 32
+               Z"
+            fill="#0758C9"
+          />
+
+        </svg>
+
+      </div>
+
+      <div class="fsgx-loader-brand-name">
+        FRIGATE
+        <span>SHIPPING GROUP</span>
+      </div>
+
+    </div>
+
+
+    <!-- Shipping Animation -->
+
+    <div class="fsgx-loader-shipping">
+
+      <div class="fsgx-loader-route">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+
+      <!-- Truck / Container -->
+
+      <div class="fsgx-loader-truck">
+
+        <div class="fsgx-loader-container">
+
+          <i></i>
+          <i></i>
+          <i></i>
+
+        </div>
+
+
+        <div class="fsgx-loader-cab">
+
+          <div></div>
+
+        </div>
+
+
+        <div class="fsgx-loader-wheel
+                    fsgx-loader-wheel-one">
+        </div>
+
+        <div class="fsgx-loader-wheel
+                    fsgx-loader-wheel-two">
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Loading Text -->
+
+    <div class="fsgx-loader-loading">
+
+      <span>LOADING</span>
+
+      <div class="fsgx-loader-dots">
+
+        <i></i>
+        <i></i>
+        <i></i>
+
+      </div>
+
+    </div>
+
+
+    <!-- Bottom Text -->
+
+    <div class="fsgx-loader-tagline">
+
+      CONNECTING YOUR BUSINESS TO THE WORLD
+
+    </div>
+
+
+    <!-- Progress -->
+
+    <div class="fsgx-loader-progress">
+
+      <div class="fsgx-loader-progress-bar"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<style>
+
+/* =========================================================
+   FRIGATE PRELOADER
+   COMPLETELY ISOLATED
+========================================================= */
+
+#fsgx-loader,
+#fsgx-loader * {
+
+  box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   MAIN SCREEN
+========================================================= */
+
+#fsgx-loader {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999999;
+
+  width: 100vw;
+
+  height: 100vh;
+
+  height: 100dvh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  opacity: 1;
+
+  visibility: visible;
+
+  transition:
+    opacity .7s ease,
+    visibility .7s ease;
+
+}
+
+
+/* =========================================================
+   HIDDEN STATE
+========================================================= */
+
+#fsgx-loader.fsgx-loader-hidden {
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================================
+   INNER
+========================================================= */
+
+.fsgx-loader-inner {
+
+  width: min(90%, 480px);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.fsgx-loader-brand {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 13px;
+
+  margin-bottom: 65px;
+
+  animation:
+    fsgxLoaderBrandIn .9s ease both;
+
+}
+
+
+.fsgx-loader-logo-mark {
+
+  width: 68px;
+
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+.fsgx-loader-logo-mark svg {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+}
+
+
+.fsgx-loader-brand-name {
+
+  color: #10213A;
+
+  font-size: 22px;
+
+  line-height: 1;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+
+}
+
+
+.fsgx-loader-brand-name span {
+
+  display: block;
+
+  margin-top: 5px;
+
+  color: #0758C9;
+
+  font-size: 8px;
+
+  letter-spacing: 2.3px;
+
+  font-weight: 800;
+
+}
+
+
+/* =========================================================
+   SHIPPING AREA
+========================================================= */
+
+.fsgx-loader-shipping {
+
+  position: relative;
+
+  width: min(100%, 420px);
+
+  height: 105px;
+
+  margin-bottom: 35px;
+
+}
+
+
+/* =========================================================
+   ROUTE LINE
+========================================================= */
+
+.fsgx-loader-route {
+
+  position: absolute;
+
+  left: 0;
+
+  right: 0;
+
+  bottom: 22px;
+
+  height: 2px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #dbe8f7,
+      transparent
+    );
+
+}
+
+
+.fsgx-loader-route::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: -30%;
+
+  top: 0;
+
+  width: 30%;
+
+  height: 100%;
+
+  background: #0758C9;
+
+  box-shadow:
+    0 0 10px
+    rgba(7,88,201,.4);
+
+  animation:
+    fsgxLoaderRouteMove
+    1.4s
+    linear
+    infinite;
+
+}
+
+
+.fsgx-loader-route span {
+
+  position: absolute;
+
+  bottom: -2px;
+
+  width: 5px;
+
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #b9d0ea;
+
+}
+
+
+.fsgx-loader-route span:nth-child(1) {
+
+  left: 10%;
+
+}
+
+
+.fsgx-loader-route span:nth-child(2) {
+
+  left: 30%;
+
+}
+
+
+.fsgx-loader-route span:nth-child(3) {
+
+  left: 50%;
+
+}
+
+
+.fsgx-loader-route span:nth-child(4) {
+
+  left: 70%;
+
+}
+
+
+.fsgx-loader-route span:nth-child(5) {
+
+  left: 90%;
+
+}
+
+
+/* =========================================================
+   TRUCK
+========================================================= */
+
+.fsgx-loader-truck {
+
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 24px;
+
+  width: 175px;
+
+  height: 64px;
+
+  transform:
+    translateX(-50%);
+
+  animation:
+    fsgxLoaderTruckMove
+    2.4s
+    ease-in-out
+    infinite;
+
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.fsgx-loader-container {
+
+  position: absolute;
+
+  left: 0;
+
+  top: 7px;
+
+  width: 105px;
+
+  height: 42px;
+
+  border-radius: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #0758C9 0%,
+      #0758C9 94%,
+      #064ba9 94%,
+      #064ba9 100%
+    );
+
+  box-shadow:
+    0 5px 12px
+    rgba(7,88,201,.18);
+
+}
+
+
+.fsgx-loader-container i {
+
+  position: absolute;
+
+  top: 4px;
+
+  bottom: 4px;
+
+  width: 2px;
+
+  background:
+    rgba(255,255,255,.25);
+
+}
+
+
+.fsgx-loader-container i:nth-child(1) {
+
+  left: 30px;
+
+}
+
+
+.fsgx-loader-container i:nth-child(2) {
+
+  left: 60px;
+
+}
+
+
+.fsgx-loader-container i:nth-child(3) {
+
+  left: 88px;
+
+}
+
+
+/* =========================================================
+   TRUCK CAB
+========================================================= */
+
+.fsgx-loader-cab {
+
+  position: absolute;
+
+  right: 0;
+
+  top: 22px;
+
+  width: 55px;
+
+  height: 42px;
+
+  border-radius:
+    4px 7px 3px 3px;
+
+  background: #10213A;
+
+}
+
+
+.fsgx-loader-cab::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: -15px;
+
+  right: 0;
+
+  width: 44px;
+
+  height: 18px;
+
+  border-radius:
+    7px 7px 0 0;
+
+  background: #10213A;
+
+}
+
+
+.fsgx-loader-cab div {
+
+  position: absolute;
+
+  top: -11px;
+
+  right: 6px;
+
+  width: 28px;
+
+  height: 10px;
+
+  border-radius: 2px;
+
+  background: #8bb9e9;
+
+}
+
+
+/* =========================================================
+   WHEELS
+========================================================= */
+
+.fsgx-loader-wheel {
+
+  position: absolute;
+
+  bottom: -7px;
+
+  width: 18px;
+
+  height: 18px;
+
+  border-radius: 50%;
+
+  background: #10213A;
+
+  border: 4px solid #ffffff;
+
+  box-shadow:
+    0 0 0 2px #10213A;
+
+  animation:
+    fsgxLoaderWheelRotate
+    .55s
+    linear
+    infinite;
+
+}
+
+
+.fsgx-loader-wheel-one {
+
+  left: 22px;
+
+}
+
+
+.fsgx-loader-wheel-two {
+
+  right: 16px;
+
+}
+
+
+/* =========================================================
+   LOADING TEXT
+========================================================= */
+
+.fsgx-loader-loading {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-bottom: 13px;
+
+  color: #10213A;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 3px;
+
+}
+
+
+.fsgx-loader-dots {
+
+  display: flex;
+
+  gap: 4px;
+
+}
+
+
+.fsgx-loader-dots i {
+
+  width: 4px;
+
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #0758C9;
+
+  animation:
+    fsgxLoaderDot
+    1.2s
+    infinite;
+
+}
+
+
+.fsgx-loader-dots i:nth-child(2) {
+
+  animation-delay: .2s;
+
+}
+
+
+.fsgx-loader-dots i:nth-child(3) {
+
+  animation-delay: .4s;
+
+}
+
+
+/* =========================================================
+   TAGLINE
+========================================================= */
+
+.fsgx-loader-tagline {
+
+  margin-bottom: 17px;
+
+  color: #8b9aad;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-align: center;
+
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.fsgx-loader-progress {
+
+  position: relative;
+
+  width: 170px;
+
+  height: 3px;
+
+  overflow: hidden;
+
+  border-radius: 50px;
+
+  background: #e8eff7;
+
+}
+
+
+.fsgx-loader-progress-bar {
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  width: 0%;
+
+  height: 100%;
+
+  border-radius: 50px;
+
+  background: #0758C9;
+
+  animation:
+    fsgxLoaderProgress
+    2.8s
+    cubic-bezier(.22,.61,.36,1)
+    forwards;
+
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fsgxLoaderBrandIn {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(-15px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+  }
+
+}
+
+
+@keyframes fsgxLoaderRouteMove {
+
+  from {
+
+    left: -30%;
+
+  }
+
+  to {
+
+    left: 100%;
+
+  }
+
+}
+
+
+@keyframes fsgxLoaderTruckMove {
+
+  0% {
+
+    transform:
+      translateX(-50%)
+      translateY(2px);
+
+  }
+
+  50% {
+
+    transform:
+      translateX(-50%)
+      translateY(-2px);
+
+  }
+
+  100% {
+
+    transform:
+      translateX(-50%)
+      translateY(2px);
+
+  }
+
+}
+
+
+@keyframes fsgxLoaderWheelRotate {
+
+  from {
+
+    transform:
+      rotate(0deg);
+
+  }
+
+  to {
+
+    transform:
+      rotate(360deg);
+
+  }
+
+}
+
+
+@keyframes fsgxLoaderDot {
+
+  0%,
+  60%,
+  100% {
+
+    opacity: .25;
+
+    transform:
+      translateY(0);
+
+  }
+
+  30% {
+
+    opacity: 1;
+
+    transform:
+      translateY(-3px);
+
+  }
+
+}
+
+
+@keyframes fsgxLoaderProgress {
+
+  0% {
+
+    width: 0%;
+
+  }
+
+  60% {
+
+    width: 70%;
+
+  }
+
+  100% {
+
+    width: 100%;
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .fsgx-loader-brand {
+
+    margin-bottom: 50px;
+
+  }
+
+
+  .fsgx-loader-logo-mark {
+
+    width: 58px;
+
+    height: 48px;
+
+  }
+
+
+  .fsgx-loader-brand-name {
+
+    font-size: 18px;
+
+  }
+
+
+  .fsgx-loader-brand-name span {
+
+    font-size: 6.5px;
+
+  }
+
+
+  .fsgx-loader-shipping {
+
+    width: 90%;
+
+    transform:
+      scale(.9);
+
+  }
+
+
+  .fsgx-loader-tagline {
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+  }
+
+}
+
+</style>
+
+
+<script>
+
+/* =========================================================
+   FRIGATE PRELOADER JS
+   COMPLETELY ISOLATED
+========================================================= */
+
+(function () {
+
+  "use strict";
+
+
+  const fsgxLoader =
+    document.getElementById(
+      "fsgx-loader"
+    );
+
+
+  if (!fsgxLoader) {
+
+    return;
+
+  }
+
+
+  /*
+   * Minimum display time.
+   * This prevents the loader from disappearing
+   * instantly on very fast connections.
+   */
+
+  const fsgxLoaderMinimumTime =
+    1400;
+
+
+  const fsgxLoaderStartTime =
+    Date.now();
+
+
+  let fsgxLoaderFinished =
+    false;
+
+
+  function fsgxLoaderHide() {
+
+    if (fsgxLoaderFinished) {
+
+      return;
+
+    }
+
+
+    fsgxLoaderFinished = true;
+
+
+    const fsgxLoaderElapsed =
+      Date.now() -
+      fsgxLoaderStartTime;
+
+
+    const fsgxLoaderRemaining =
+      Math.max(
+        0,
+        fsgxLoaderMinimumTime -
+        fsgxLoaderElapsed
+      );
+
+
+    setTimeout(
+
+      function () {
+
+        fsgxLoader.classList.add(
+          "fsgx-loader-hidden"
+        );
+
+
+        setTimeout(
+
+          function () {
+
+            fsgxLoader.remove();
+
+          },
+
+          800
+
+        );
+
+      },
+
+      fsgxLoaderRemaining
+
+    );
+
+  }
+
+
+  /*
+   * Wait until the whole page is loaded.
+   */
+
+  if (
+    document.readyState ===
+    "complete"
+  ) {
+
+    fsgxLoaderHide();
+
+  } else {
+
+    window.addEventListener(
+      "load",
+      fsgxLoaderHide,
+      { once: true }
+    );
+
+  }
+
+
+  /*
+   * Safety fallback.
+   * If something on the website takes too long,
+   * don't keep the visitor stuck on the loader.
+   */
+
+  setTimeout(
+
+    function () {
+
+      fsgxLoaderHide();
+
+    },
+
+    6500
+
+  );
+
+
+})();
+
+</script>
+ <!-- =========================================================
+     FRIGATE SHIPPING GROUP
+     HEADER / NAVBAR
+     FULLY ISOLATED
+     
+     Navigation:
+     01 - About Us
+     02 - Our Services
+     03 - Our Vision
+     04 - Our Mission
+     05 - Contact Us
+
+     Mobile:
+     - Global Shipping Menu Button
+     - Responsive Dropdown
+     - Animated Globe / Route
+     - Close Icon
+========================================================= -->
+
+
+<header
+  class="fsgx-header"
+  id="fsgx-header"
+>
+
+  <div class="fsgx-header-inner">
+
+
+    <!-- =====================================================
+         LOGO
+    ====================================================== -->
+
+    <a
+      href="#"
+      class="fsgx-header-logo"
+      aria-label="Frigate Shipping Group"
+    >
+
+      <img
+        src="logo.png"
+        alt="Frigate Shipping Group logo"
+      />
+
+    </a>
+
+
+    <!-- =====================================================
+         DESKTOP NAVIGATION
+    ====================================================== -->
+
+    <nav
+      class="fsgx-header-nav"
+      aria-label="Main Navigation"
+    >
+
+
+      <!-- ABOUT US -->
+
+      <a
+        href="#about"
+        class="fsgx-header-link"
+      >
+        About Us
+      </a>
+
+
+      <!-- OUR SERVICES -->
+
+      <a
+        href="#services"
+        class="fsgx-header-link"
+      >
+        Our Services
+      </a>
+
+
+      <!-- OUR VISION -->
+
+      <a
+        href="#vision"
+        class="fsgx-header-link"
+      >
+        Our Vision
+      </a>
+
+
+      <!-- OUR MISSION -->
+
+      <a
+        href="#fsgx-mission"
+        class="fsgx-header-link"
+      >
+        Our Mission
+      </a>
+
+
+      <!-- CONTACT US -->
+
+      <a
+        href="#fsgx-contact-section"
+        class="fsgx-header-link"
+      >
+        Contact Us
+      </a>
+
+
+      <!-- ===================================================
+           INTERNATIONAL SHIPPING CTA
+      ==================================================== -->
+
+      <a
+        href="#fsgx-contact-section"
+        class="fsgx-header-cta"
+        aria-label="Get a Quote"
+      >
+
+        <!-- Airplane -->
+
+        <span class="fsgx-header-cta-icon">
+
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+
+            <path
+              d="M21 3
+                 3.8 9.4
+                 3.8 11.2
+                 10.1 12.5
+                 6.7 17.5
+                 8.2 18.5
+                 13.1 13.1
+                 20.7 10.1
+                 Z"
+            />
+
+            <path
+              d="M10.1 12.5
+                 6.5 8.8"
+            />
+
+          </svg>
+
+        </span>
+
+
+        <!-- CTA Text -->
+
+        <span class="fsgx-header-cta-text">
+          Get a Quote
+        </span>
+
+
+        <!-- Arrow -->
+
+        <span class="fsgx-header-cta-arrow">
+          →
+        </span>
+
+      </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MOBILE SHIPPING MENU BUTTON
+    ====================================================== -->
+
+    <button
+      type="button"
+      class="fsgx-header-menu-button"
+      id="fsgx-header-menu-button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="fsgx-header-mobile-menu"
+    >
+
+      <span class="fsgx-header-menu-icon">
+
+
+        <!-- =================================================
+             GLOBAL SHIPPING ICON
+        ================================================== -->
+
+        <svg
+          class="fsgx-header-menu-globe"
+          viewBox="0 0 32 32"
+          aria-hidden="true"
+        >
+
+          <!-- Globe -->
+
+          <circle
+            cx="16"
+            cy="16"
+            r="11"
+          />
+
+          <!-- Horizontal Globe Line -->
+
+          <path
+            d="M5 16h22"
+          />
+
+          <!-- Globe Curves -->
+
+          <path
+            d="M16 5
+               c4 3.5
+               4 18.5
+               0 22"
+          />
+
+          <path
+            d="M16 5
+               c-4 3.5
+               -4 18.5
+               0 22"
+          />
+
+          <!-- Shipping Route -->
+
+          <path
+            class="fsgx-header-menu-route"
+            d="M7 25
+               C12 28
+               19 27
+               25 22"
+          />
+
+        </svg>
+
+
+        <!-- =================================================
+             CLOSE ICON
+        ================================================== -->
+
+        <svg
+          class="fsgx-header-menu-close"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+
+          <path
+            d="M5 5l14 14"
+          />
+
+          <path
+            d="M19 5L5 19"
+          />
+
+        </svg>
+
+
+      </span>
+
+
+      <!-- Menu Text -->
+
+      <span class="fsgx-header-menu-text">
+        MENU
+      </span>
+
+    </button>
+
+  </div>
+
+
+
+  <!-- =======================================================
+       MOBILE MENU
+  ======================================================== -->
+
+  <div
+    class="fsgx-header-mobile-menu"
+    id="fsgx-header-mobile-menu"
+  >
+
+    <div class="fsgx-header-mobile-menu-inner">
+
+
+      <!-- =================================================
+           MOBILE MENU HEADER
+      ================================================== -->
+
+      <div class="fsgx-header-mobile-top">
+
+        <span>
+          MENU
+        </span>
+
+        <span>
+          FRIGATE SHIPPING GROUP
+        </span>
+
+      </div>
+
+
+      <!-- =================================================
+           MOBILE NAVIGATION
+      ================================================== -->
+
+      <nav
+        class="fsgx-header-mobile-nav"
+        aria-label="Mobile Navigation"
+      >
+
+
+        <!-- =================================================
+             01 — ABOUT US
+        ================================================== -->
+
+        <a
+          href="#about"
+          class="fsgx-header-mobile-link"
+        >
+
+          <span class="fsgx-header-mobile-number">
+            01
+          </span>
+
+          <span class="fsgx-header-mobile-link-name">
+            About Us
+          </span>
+
+          <i>
+            →
+          </i>
+
+        </a>
+
+
+        <!-- =================================================
+             02 — OUR SERVICES
+        ================================================== -->
+
+        <a
+          href="#services"
+          class="fsgx-header-mobile-link"
+        >
+
+          <span class="fsgx-header-mobile-number">
+            02
+          </span>
+
+          <span class="fsgx-header-mobile-link-name">
+            Our Services
+          </span>
+
+          <i>
+            →
+          </i>
+
+        </a>
+
+
+        <!-- =================================================
+             03 — OUR VISION
+        ================================================== -->
+
+        <a
+          href="#vision"
+          class="fsgx-header-mobile-link"
+        >
+
+          <span class="fsgx-header-mobile-number">
+            03
+          </span>
+
+          <span class="fsgx-header-mobile-link-name">
+            Our Vision
+          </span>
+
+          <i>
+            →
+          </i>
+
+        </a>
+
+
+        <!-- =================================================
+             04 — OUR MISSION
+        ================================================== -->
+
+        <a
+          href="#fsgx-mission"
+          class="fsgx-header-mobile-link"
+        >
+
+          <span class="fsgx-header-mobile-number">
+            04
+          </span>
+
+          <span class="fsgx-header-mobile-link-name">
+            Our Mission
+          </span>
+
+          <i>
+            →
+          </i>
+
+        </a>
+
+
+        <!-- =================================================
+             05 — CONTACT US
+        ================================================== -->
+
+        <a
+          href="#fsgx-contact-section"
+          class="fsgx-header-mobile-link"
+        >
+
+          <span class="fsgx-header-mobile-number">
+            05
+          </span>
+
+          <span class="fsgx-header-mobile-link-name">
+            Contact Us
+          </span>
+
+          <i>
+            →
+          </i>
+
+        </a>
+
+      </nav>
+
+
+      <!-- =================================================
+           MOBILE CTA
+      ================================================== -->
+
+      <a
+        href="#fsgx-contact-section"
+        class="fsgx-header-mobile-cta"
+      >
+
+        <span class="fsgx-header-mobile-cta-plane">
+
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+
+            <path
+              d="M21 3
+                 3.8 9.4
+                 3.8 11.2
+                 10.1 12.5
+                 6.7 17.5
+                 8.2 18.5
+                 13.1 13.1
+                 20.7 10.1
+                 Z"
+            />
+
+          </svg>
+
+        </span>
+
+
+        <span>
+          Request a Quote
+        </span>
+
+
+        <span class="fsgx-header-mobile-cta-arrow">
+          →
+        </span>
+
+      </a>
+
+
+    </div>
+
+  </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     FRIGATE HEADER — ISOLATED CSS
+========================================================= -->
+
+<style>
+
+/* =========================================================
+   HEADER VARIABLES
+========================================================= */
+
+.fsgx-header {
+
+  --fsgx-header-blue: #0758c9;
+
+  --fsgx-header-blue-dark: #064aa8;
+
+  --fsgx-header-dark: #10213a;
+
+  --fsgx-header-text: #526277;
+
+  --fsgx-header-border: rgba(16,33,58,.08);
+
+  --fsgx-header-white: #ffffff;
+
+  position: relative;
+
+  width: 100%;
+
+  z-index: 9999;
+
+  background:
+    rgba(255,255,255,.97);
+
+  border-bottom:
+    1px solid
+    var(--fsgx-header-border);
+
+}
+
+
+/* =========================================================
+   HEADER INNER
+========================================================= */
+
+.fsgx-header-inner {
+
+  width: 100%;
+
+  max-width: 1380px;
+
+  min-height: 88px;
+
+  margin: 0 auto;
+
+  padding:
+    0 5%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 40px;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.fsgx-header-logo {
+
+  display: flex;
+
+  align-items: center;
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+
+}
+
+
+.fsgx-header-logo img {
+
+  display: block;
+
+  width: auto;
+
+  max-width: 180px;
+
+  height: auto;
+
+  max-height: 58px;
+
+  object-fit: contain;
+
+}
+
+
+/* =========================================================
+   DESKTOP NAVIGATION
+========================================================= */
+
+.fsgx-header-nav {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 29px;
+
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.fsgx-header-link {
+
+  position: relative;
+
+  padding:
+    8px 0;
+
+  color:
+    var(--fsgx-header-text);
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: .2px;
+
+  white-space: nowrap;
+
+  transition:
+    color .25s ease;
+
+}
+
+
+.fsgx-header-link::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 0;
+
+  width: 0;
+
+  height: 2px;
+
+  border-radius: 50px;
+
+  background:
+    var(--fsgx-header-blue);
+
+  transform:
+    translateX(-50%);
+
+  transition:
+    width .25s ease;
+
+}
+
+
+.fsgx-header-link:hover {
+
+  color:
+    var(--fsgx-header-blue);
+
+}
+
+
+.fsgx-header-link:hover::after {
+
+  width: 100%;
+
+}
+
+
+/* =========================================================
+   INTERNATIONAL SHIPPING CTA
+========================================================= */
+
+.fsgx-header-cta {
+
+  position: relative;
+
+  min-height: 45px;
+
+  padding:
+    0 10px 0 12px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  overflow: hidden;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--fsgx-header-blue),
+      var(--fsgx-header-blue-dark)
+    );
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: .2px;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 9px 22px
+    rgba(7,88,201,.20);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+
+}
+
+
+/* =========================================================
+   SHIPPING ROUTE
+========================================================= */
+
+.fsgx-header-cta::before {
+
+  content: "";
+
+  position: absolute;
+
+  left: -45px;
+
+  top: 50%;
+
+  width: 100px;
+
+  height: 1px;
+
+  border-top:
+    1px dashed
+    rgba(255,255,255,.38);
+
+  transform:
+    translateY(-50%);
+
+  transition:
+    left .55s ease;
+
+}
+
+
+/* =========================================================
+   AIRPLANE ICON
+========================================================= */
+
+.fsgx-header-cta-icon {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 23px;
+
+  height: 23px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,.16);
+
+  transition:
+    transform .4s ease,
+    background .3s ease;
+
+}
+
+
+.fsgx-header-cta-icon svg {
+
+  width: 14px;
+
+  height: 14px;
+
+  fill: none;
+
+  stroke:
+    #ffffff;
+
+  stroke-width: 1.5;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  transform:
+    rotate(-5deg);
+
+}
+
+
+/* =========================================================
+   CTA TEXT
+========================================================= */
+
+.fsgx-header-cta-text {
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+/* =========================================================
+   CTA ARROW
+========================================================= */
+
+.fsgx-header-cta-arrow {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 22px;
+
+  height: 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color:
+    var(--fsgx-header-blue);
+
+  background:
+    #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 900;
+
+  transition:
+    transform .35s ease;
+
+}
+
+
+/* =========================================================
+   CTA HOVER
+========================================================= */
+
+.fsgx-header-cta:hover {
+
+  color: #ffffff;
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 14px 28px
+    rgba(7,88,201,.28);
+
+}
+
+
+.fsgx-header-cta:hover::before {
+
+  left:
+    100%;
+
+}
+
+
+.fsgx-header-cta:hover
+.fsgx-header-cta-icon {
+
+  transform:
+    translateX(5px)
+    rotate(-8deg);
+
+  background:
+    rgba(255,255,255,.25);
+
+}
+
+
+.fsgx-header-cta:hover
+.fsgx-header-cta-arrow {
+
+  transform:
+    translateX(4px);
+
+}
+
+
+/* =========================================================
+   MOBILE SHIPPING MENU BUTTON
+========================================================= */
+
+.fsgx-header-menu-button {
+
+  display: none;
+
+  position: relative;
+
+  min-width: 92px;
+
+  height: 44px;
+
+  padding:
+    0 11px;
+
+  border:
+    1px solid
+    rgba(7,88,201,.14);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  cursor: pointer;
+
+  background:
+    #f6f9fd;
+
+  color:
+    var(--fsgx-header-dark);
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  font-family: inherit;
+
+  box-shadow:
+    0 5px 15px
+    rgba(16,33,58,.05);
+
+  transition:
+    background .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease,
+    transform .3s ease;
+
+}
+
+
+/* =========================================================
+   MENU ICON CONTAINER
+========================================================= */
+
+.fsgx-header-menu-icon {
+
+  position: relative;
+
+  width: 25px;
+
+  height: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+}
+
+
+/* =========================================================
+   GLOBE
+========================================================= */
+
+.fsgx-header-menu-globe {
+
+  width: 24px;
+
+  height: 24px;
+
+  fill: none;
+
+  stroke:
+    var(--fsgx-header-blue);
+
+  stroke-width: 1.35;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  transition:
+    opacity .25s ease,
+    transform .4s ease;
+
+}
+
+
+/* =========================================================
+   SHIPPING ROUTE INSIDE GLOBE
+========================================================= */
+
+.fsgx-header-menu-route {
+
+  stroke:
+    var(--fsgx-header-dark);
+
+  stroke-width: 1.4;
+
+  stroke-dasharray: 2 2;
+
+  opacity: .7;
+
+}
+
+
+/* =========================================================
+   CLOSE ICON
+========================================================= */
+
+.fsgx-header-menu-close {
+
+  position: absolute;
+
+  width: 19px;
+
+  height: 19px;
+
+  fill: none;
+
+  stroke:
+    #ffffff;
+
+  stroke-width: 2;
+
+  stroke-linecap: round;
+
+  opacity: 0;
+
+  transform:
+    rotate(-45deg)
+    scale(.5);
+
+  transition:
+    opacity .25s ease,
+    transform .35s ease;
+
+}
+
+
+/* =========================================================
+   MENU TEXT
+========================================================= */
+
+.fsgx-header-menu-text {
+
+  color:
+    var(--fsgx-header-dark);
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.2px;
+
+  line-height: 1;
+
+  transition:
+    color .25s ease;
+
+}
+
+
+/* =========================================================
+   MENU BUTTON HOVER
+========================================================= */
+
+.fsgx-header-menu-button:hover {
+
+  border-color:
+    rgba(7,88,201,.3);
+
+  background:
+    #edf5ff;
+
+  box-shadow:
+    0 8px 20px
+    rgba(7,88,201,.10);
+
+  transform:
+    translateY(-1px);
+
+}
+
+
+.fsgx-header-menu-button:hover
+.fsgx-header-menu-globe {
+
+  transform:
+    rotate(8deg);
+
+}
+
+
+/* =========================================================
+   MENU BUTTON ACTIVE
+========================================================= */
+
+.fsgx-header-menu-button.fsgx-header-menu-active {
+
+  color:
+    #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--fsgx-header-blue),
+      var(--fsgx-header-dark)
+    );
+
+  border-color:
+    transparent;
+
+  box-shadow:
+    0 10px 23px
+    rgba(7,88,201,.22);
+
+}
+
+
+/* Hide Globe */
+
+.fsgx-header-menu-button.fsgx-header-menu-active
+.fsgx-header-menu-globe {
+
+  opacity: 0;
+
+  transform:
+    rotate(90deg)
+    scale(.5);
+
+}
+
+
+/* Show Close */
+
+.fsgx-header-menu-button.fsgx-header-menu-active
+.fsgx-header-menu-close {
+
+  opacity: 1;
+
+  transform:
+    rotate(0)
+    scale(1);
+
+}
+
+
+/* White MENU */
+
+.fsgx-header-menu-button.fsgx-header-menu-active
+.fsgx-header-menu-text {
+
+  color:
+    #ffffff;
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.fsgx-header-mobile-menu {
+
+  display: none;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .fsgx-header-inner {
+
+    padding:
+      0 4%;
+
+  }
+
+
+  .fsgx-header-nav {
+
+    gap: 19px;
+
+  }
+
+
+  .fsgx-header-link {
+
+    font-size: 11px;
+
+  }
+
+
+  .fsgx-header-cta {
+
+    padding-left: 10px;
+
+    padding-right: 9px;
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+
+  /* =======================================================
+     HEADER
+  ======================================================== */
+
+  .fsgx-header-inner {
+
+    min-height: 72px;
+
+    padding:
+      0 18px;
+
+  }
+
+
+  /* =======================================================
+     LOGO
+  ======================================================== */
+
+  .fsgx-header-logo img {
+
+    max-width: 145px;
+
+    max-height: 50px;
+
+  }
+
+
+  /* =======================================================
+     HIDE DESKTOP NAV
+  ======================================================== */
+
+  .fsgx-header-nav {
+
+    display: none;
+
+  }
+
+
+  /* =======================================================
+     SHOW SHIPPING MENU
+  ======================================================== */
+
+  .fsgx-header-menu-button {
+
+    display: flex;
+
+  }
+
+
+  /* =======================================================
+     MOBILE MENU
+  ======================================================== */
+
+  .fsgx-header-mobile-menu {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 100%;
+
+    width: 100%;
+
+    display: block;
+
+    background:
+      rgba(255,255,255,.985);
+
+    border-bottom:
+      1px solid
+      rgba(16,33,58,.08);
+
+    box-shadow:
+      0 20px 40px
+      rgba(16,33,58,.10);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+      translateY(-12px);
+
+    transition:
+      opacity .3s ease,
+      visibility .3s ease,
+      transform .3s ease;
+
+  }
+
+
+  /* =======================================================
+     OPEN MENU
+  ======================================================== */
+
+  .fsgx-header-mobile-menu.fsgx-header-mobile-open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+      translateY(0);
+
+  }
+
+
+  /* =======================================================
+     MOBILE MENU INNER
+  ======================================================== */
+
+  .fsgx-header-mobile-menu-inner {
+
+    width: 100%;
+
+    padding:
+      22px 18px 25px;
+
+  }
+
+
+  /* =======================================================
+     MOBILE MENU HEADER
+  ======================================================== */
+
+  .fsgx-header-mobile-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 17px;
+
+    padding-bottom: 14px;
+
+    border-bottom:
+      1px solid
+      #e8edf4;
+
+  }
+
+
+  .fsgx-header-mobile-top
+  span:first-child {
+
+    color:
+      var(--fsgx-header-blue);
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.7px;
+
+  }
+
+
+  .fsgx-header-mobile-top
+  span:last-child {
+
+    color:
+      #9aa7b7;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: .8px;
+
+  }
+
+
+  /* =======================================================
+     MOBILE NAV
+  ======================================================== */
+
+  .fsgx-header-mobile-nav {
+
+    display: flex;
+
+    flex-direction: column;
+
+  }
+
+
+  /* =======================================================
+     MOBILE LINK
+  ======================================================== */
+
+  .fsgx-header-mobile-link {
+
+    min-height: 58px;
+
+    display: grid;
+
+    grid-template-columns:
+      34px 1fr 25px;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color:
+      var(--fsgx-header-dark);
+
+    text-decoration: none;
+
+    border-bottom:
+      1px solid #edf1f6;
+
+    transition:
+      color .2s ease,
+      padding-left .2s ease;
+
+  }
+
+
+  .fsgx-header-mobile-link:hover {
+
+    color:
+      var(--fsgx-header-blue);
+
+    padding-left: 5px;
+
+  }
+
+
+  /* =======================================================
+     MOBILE NUMBER
+  ======================================================== */
+
+  .fsgx-header-mobile-number {
+
+    color:
+      var(--fsgx-header-blue);
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+  }
+
+
+  /* =======================================================
+     MOBILE LINK NAME
+  ======================================================== */
+
+  .fsgx-header-mobile-link-name {
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+  }
+
+
+  /* =======================================================
+     MOBILE ARROW
+  ======================================================== */
+
+  .fsgx-header-mobile-link i {
+
+    width: 25px;
+
+    height: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color:
+      var(--fsgx-header-blue);
+
+    background:
+      #edf5ff;
+
+    font-size: 12px;
+
+    font-style: normal;
+
+    transition:
+      transform .2s ease;
+
+  }
+
+
+  .fsgx-header-mobile-link:hover i {
+
+    transform:
+      translateX(3px);
+
+  }
+
+
+  /* =======================================================
+     MOBILE CTA
+  ======================================================== */
+
+  .fsgx-header-mobile-cta {
+
+    position: relative;
+
+    height: 50px;
+
+    margin-top: 19px;
+
+    padding:
+      0 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    color:
+      #ffffff;
+
+    background:
+      linear-gradient(
+        135deg,
+        var(--fsgx-header-blue),
+        var(--fsgx-header-blue-dark)
+      );
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    box-shadow:
+      0 9px 20px
+      rgba(7,88,201,.17);
+
+  }
+
+
+  /* =======================================================
+     MOBILE CTA PLANE
+  ======================================================== */
+
+  .fsgx-header-mobile-cta-plane {
+
+    width: 25px;
+
+    height: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+      rgba(255,255,255,.16);
+
+  }
+
+
+  .fsgx-header-mobile-cta-plane svg {
+
+    width: 14px;
+
+    height: 14px;
+
+    fill: none;
+
+    stroke:
+      #ffffff;
+
+    stroke-width: 1.5;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+    transform:
+      rotate(-5deg);
+
+  }
+
+
+  /* =======================================================
+     MOBILE CTA ARROW
+  ======================================================== */
+
+  .fsgx-header-mobile-cta-arrow {
+
+    width: 23px;
+
+    height: 23px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color:
+      var(--fsgx-header-blue);
+
+    background:
+      #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .fsgx-header-inner {
+
+    min-height: 68px;
+
+    padding:
+      0 14px;
+
+  }
+
+
+  .fsgx-header-logo img {
+
+    max-width: 130px;
+
+  }
+
+
+  .fsgx-header-menu-button {
+
+    min-width: 84px;
+
+    height: 41px;
+
+    padding:
+      0 9px;
+
+  }
+
+
+  .fsgx-header-menu-text {
+
+    font-size: 8px;
+
+  }
+
+
+  .fsgx-header-mobile-menu-inner {
+
+    padding-left: 14px;
+
+    padding-right: 14px;
+
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .fsgx-header *,
+  .fsgx-header *::before,
+  .fsgx-header *::after {
+
+    transition: none !important;
+
+    animation: none !important;
+
+  }
+
+}
+
+</style>
+
+
+
+<!-- =========================================================
+     FRIGATE HEADER — ISOLATED JAVASCRIPT
+========================================================= -->
+
+<script>
+
+(function () {
+
+  "use strict";
+
+
+  /* =======================================================
+     ELEMENTS
+  ======================================================= */
+
+  const fsgxHeaderMenuButton =
+    document.getElementById(
+      "fsgx-header-menu-button"
+    );
+
+
+  const fsgxHeaderMobileMenu =
+    document.getElementById(
+      "fsgx-header-mobile-menu"
+    );
+
+
+  const fsgxHeaderMobileLinks =
+    document.querySelectorAll(
+      ".fsgx-header-mobile-link"
+    );
+
+
+  const fsgxHeaderMobileCTA =
+    document.querySelector(
+      ".fsgx-header-mobile-cta"
+    );
+
+
+  /* =======================================================
+     SAFETY CHECK
+  ======================================================= */
+
+  if (
+    !fsgxHeaderMenuButton ||
+    !fsgxHeaderMobileMenu
+  ) {
+
+    return;
+
+  }
+
+
+  /* =======================================================
+     OPEN MENU
+  ======================================================= */
+
+  function fsgxHeaderOpenMenu() {
+
+    fsgxHeaderMenuButton.classList.add(
+      "fsgx-header-menu-active"
+    );
+
+
+    fsgxHeaderMobileMenu.classList.add(
+      "fsgx-header-mobile-open"
+    );
+
+
+    fsgxHeaderMenuButton.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+
+    fsgxHeaderMenuButton.setAttribute(
+      "aria-label",
+      "Close navigation menu"
+    );
+
+  }
+
+
+  /* =======================================================
+     CLOSE MENU
+  ======================================================= */
+
+  function fsgxHeaderCloseMenu() {
+
+    fsgxHeaderMenuButton.classList.remove(
+      "fsgx-header-menu-active"
+    );
+
+
+    fsgxHeaderMobileMenu.classList.remove(
+      "fsgx-header-mobile-open"
+    );
+
+
+    fsgxHeaderMenuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+
+    fsgxHeaderMenuButton.setAttribute(
+      "aria-label",
+      "Open navigation menu"
+    );
+
+  }
+
+
+  /* =======================================================
+     TOGGLE MENU
+  ======================================================= */
+
+  function fsgxHeaderToggleMenu() {
+
+    const fsgxHeaderIsOpen =
+      fsgxHeaderMenuButton.classList.contains(
+        "fsgx-header-menu-active"
+      );
+
+
+    if (fsgxHeaderIsOpen) {
+
+      fsgxHeaderCloseMenu();
+
+    } else {
+
+      fsgxHeaderOpenMenu();
+
+    }
+
+  }
+
+
+  /* =======================================================
+     MENU BUTTON CLICK
+  ======================================================= */
+
+  fsgxHeaderMenuButton.addEventListener(
+
+    "click",
+
+    fsgxHeaderToggleMenu
+
+  );
+
+
+  /* =======================================================
+     CLOSE AFTER CLICKING MOBILE LINK
+  ======================================================= */
+
+  fsgxHeaderMobileLinks.forEach(
+
+    function (
+      fsgxHeaderLink
+    ) {
+
+      fsgxHeaderLink.addEventListener(
+
+        "click",
+
+        function () {
+
+          fsgxHeaderCloseMenu();
+
+        }
+
+      );
+
+    }
+
+  );
+
+
+  /* =======================================================
+     CLOSE AFTER MOBILE CTA
+  ======================================================= */
+
+  if (fsgxHeaderMobileCTA) {
+
+    fsgxHeaderMobileCTA.addEventListener(
+
+      "click",
+
+      function () {
+
+        fsgxHeaderCloseMenu();
+
+      }
+
+    );
+
+  }
+
+
+  /* =======================================================
+     CLOSE WITH ESCAPE
+  ======================================================= */
+
+  document.addEventListener(
+
+    "keydown",
+
+    function (
+      fsgxHeaderEvent
+    ) {
+
+      if (
+        fsgxHeaderEvent.key ===
+        "Escape"
+      ) {
+
+        fsgxHeaderCloseMenu();
+
+      }
+
+    }
+
+  );
+
+
+  /* =======================================================
+     CLOSE WHEN RETURNING TO DESKTOP
+  ======================================================= */
+
+  window.addEventListener(
+
+    "resize",
+
+    function () {
+
+      if (
+        window.innerWidth > 800
+      ) {
+
+        fsgxHeaderCloseMenu();
+
+      }
+
+    }
+
+  );
+
+
+})();
+
+</script>
+<!-- =========================================================
+     FRIGATE SHIPPING GROUP
+     FLOATING BACK TO TOP BUTTON
+     FULLY ISOLATED
+=========================================================زرار قديم --> 
+
+<!-- =========================================
+     FSGX SCROLL PROGRESS BUTTON
+========================================= -->
+
+<div id="fsgxProgressButton" class="fsgx-progress-button">
+
+  <svg class="fsgx-progress-svg" viewBox="0 0 100 100">
+
+    <!-- الدائرة الخلفية -->
+    <circle
+      class="fsgx-progress-bg"
+      cx="50"
+      cy="50"
+      r="43">
+    </circle>
+
+    <!-- دائرة نسبة السكرول -->
+    <circle
+      id="fsgxProgressCircle"
+      class="fsgx-progress-circle"
+      cx="50"
+      cy="50"
+      r="43">
+    </circle>
+
+  </svg>
+
+  <button
+    id="fsgxProgressTrigger"
+    class="fsgx-progress-trigger"
+    aria-label="Back to top">
+
+    <svg viewBox="0 0 24 24">
+      <path d="M12 19V5"></path>
+      <path d="M6.5 11.5L12 5l5.5 6.5"></path>
+    </svg>
+
+  </button>
+
+  <span id="fsgxProgressPercent">0%</span>
+
+</div>
+
+
+<style>
+
+/* =========================================
+   FSGX — SCROLL PROGRESS
+========================================= */
+
+#fsgxProgressButton {
+
+  --fsgx-progress-size: 70px;
+
+  position: fixed;
+
+  right: 28px;
+  bottom: 28px;
+
+  width: var(--fsgx-progress-size);
+  height: var(--fsgx-progress-size);
+
+  z-index: 99999;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(20px) scale(.85);
+
+  transition:
+    opacity .35s ease,
+    visibility .35s ease,
+    transform .35s ease;
+}
+
+
+/* يظهر بعد بداية السكرول */
+
+#fsgxProgressButton.fsgx-show {
+
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0) scale(1);
+
+}
+
+
+/* =========================================
+   SVG
+========================================= */
+
+#fsgxProgressButton .fsgx-progress-svg {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transform: rotate(-90deg);
+
+}
+
+
+/* الدائرة الخلفية */
+
+#fsgxProgressButton .fsgx-progress-bg {
+
+  fill: #061a2d;
+
+  stroke: rgba(255,255,255,.12);
+
+  stroke-width: 5;
+
+}
+
+
+/* دائرة التقدم */
+
+#fsgxProgressButton .fsgx-progress-circle {
+
+  fill: none;
+
+  stroke: #1599ed;
+
+  stroke-width: 5;
+
+  stroke-linecap: round;
+
+  stroke-dasharray: 270.18;
+
+  stroke-dashoffset: 270.18;
+
+  filter:
+    drop-shadow(0 0 5px rgba(21,153,237,.45));
+
+  transition:
+    stroke-dashoffset .15s linear;
+
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+#fsgxProgressButton .fsgx-progress-trigger {
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 51px;
+  height: 51px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0b75d1,
+      #06396c
+    );
+
+  box-shadow:
+
+    inset 0 1px 2px rgba(255,255,255,.2),
+
+    0 8px 22px rgba(0,0,0,.28);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+
+    transform .25s ease,
+    box-shadow .25s ease;
+
+}
+
+
+/* السهم */
+
+#fsgxProgressButton .fsgx-progress-trigger svg {
+
+  width: 22px;
+  height: 22px;
+
+  fill: none;
+
+  stroke: white;
+
+  stroke-width: 2;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  transition: transform .25s ease;
+
+}
+
+
+/* Hover */
+
+#fsgxProgressButton .fsgx-progress-trigger:hover {
+
+  transform:
+    translate(-50%, -50%)
+    translateY(-3px);
+
+  box-shadow:
+
+    inset 0 1px 2px rgba(255,255,255,.25),
+
+    0 12px 28px rgba(0,0,0,.35),
+
+    0 0 18px rgba(21,153,237,.25);
+
+}
+
+
+#fsgxProgressButton .fsgx-progress-trigger:hover svg {
+
+  transform: translateY(-2px);
+
+}
+
+
+/* =========================================
+   PERCENTAGE
+========================================= */
+
+#fsgxProgressButton #fsgxProgressPercent {
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -17px;
+
+  transform: translateX(-50%);
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  color: #0878d1;
+
+  opacity: .85;
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  #fsgxProgressButton {
+
+    --fsgx-progress-size: 60px;
+
+    right: 17px;
+    bottom: 20px;
+
+  }
+
+  #fsgxProgressButton .fsgx-progress-trigger {
+
+    width: 44px;
+    height: 44px;
+
+  }
+
+  #fsgxProgressButton .fsgx-progress-trigger svg {
+
+    width: 19px;
+    height: 19px;
+
+  }
+
+  #fsgxProgressButton #fsgxProgressPercent {
+
+    bottom: -15px;
+
+    font-size: 7px;
+
+  }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  #fsgxProgressButton,
+  #fsgxProgressButton .fsgx-progress-circle,
+  #fsgxProgressButton .fsgx-progress-trigger,
+  #fsgxProgressButton .fsgx-progress-trigger svg {
+
+    transition: none !important;
+
+  }
+
+}
+
+</style>
+
+
+<script>
+
+(function () {
+
+  const button =
+    document.getElementById("fsgxProgressButton");
+
+  const trigger =
+    document.getElementById("fsgxProgressTrigger");
+
+  const circle =
+    document.getElementById("fsgxProgressCircle");
+
+  const percent =
+    document.getElementById("fsgxProgressPercent");
+
+
+  if (!button || !trigger || !circle || !percent) {
+    return;
+  }
+
+
+  const circumference =
+    2 * Math.PI * 43;
+
+
+  circle.style.strokeDasharray =
+    circumference;
+
+
+  function updateScrollProgress() {
+
+    const scrollTop =
+      window.scrollY || document.documentElement.scrollTop;
+
+
+    const documentHeight =
+      document.documentElement.scrollHeight;
+
+
+    const windowHeight =
+      window.innerHeight;
+
+
+    const totalScrollable =
+      documentHeight - windowHeight;
+
+
+    let progress = 0;
+
+
+    if (totalScrollable > 0) {
+
+      progress =
+        (scrollTop / totalScrollable) * 100;
+
+    }
+
+
+    progress =
+      Math.max(
+        0,
+        Math.min(100, progress)
+      );
+
+
+    /* تحديث الدائرة */
+
+    const offset =
+      circumference -
+      (progress / 100) * circumference;
+
+
+    circle.style.strokeDashoffset =
+      offset;
+
+
+    /* تحديث النسبة */
+
+    percent.textContent =
+      Math.round(progress) + "%";
+
+
+    /* إظهار الزر */
+
+    if (scrollTop > 180) {
+
+      button.classList.add("fsgx-show");
+
+    } else {
+
+      button.classList.remove("fsgx-show");
+
+    }
+
+  }
+
+
+  window.addEventListener(
+    "scroll",
+    updateScrollProgress,
+    { passive: true }
+  );
+
+
+  window.addEventListener(
+    "resize",
+    updateScrollProgress,
+    { passive: true }
+  );
+
+
+  /* الضغط يرجع لأعلى */
+
+  trigger.addEventListener(
+    "click",
+    function () {
+
+      window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+      });
+
+    }
+  );
+
+
+  updateScrollProgress();
+
+
+})();
+
+</script>
+</script>
+    <main>
+      <section class="hero">
+        <div class="hero-bg-motion"></div>
+        <div class="hero-content">
+          <div class="eyebrow">GLOBAL REACH. LOCAL COMMITMENT.</div>
+          <h1>FRIGATE<br />SHIPPING GROUP</h1>
+          <p>
+            Professional freight and logistics solutions connecting your
+            business to global markets.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#services"
+              >Explore Our Services <span class="arrow">→</span></a
+            >
+<a class="btn btn-outline" href="#fsgx-contact-section">
+  Contact Us <span class="arrow">→</span>
+</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-number" data-target="20">0+</div>
+              <div class="stat-label">Countries</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" data-target="500">0+</div>
+              <div class="stat-label">Shipments</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" data-target="10">0+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Secure & Reliable</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="services-strip reveal">
+        <a class="service" href="#"
+          ><span class="service-icon">⚓</span
+          ><span>Sea Freight<br />Solutions</span></a
+        >
+        <a class="service" href="#"
+          ><span class="service-icon">✈</span
+          ><span>Air Freight<br />Solutions</span></a
+        >
+        <a class="service" href="#"
+          ><span class="service-icon">▣</span
+          ><span>Land Freight<br />Solutions</span></a
+        >
+        <a class="service" href="#"
+          ><span class="service-icon">⌂</span
+          ><span>Warehousing &<br />Distribution</span></a
+        >
+        <a class="service" href="#"
+          ><span class="service-icon">✓</span
+          ><span>Customs Clearance<br />& Compliance</span></a
+        >
+        <a class="service" href="#"
+          ><span class="service-icon">↗</span
+          ><span>Supply Chain<br />Management</span></a
+        >
+      </section>
+<section id="about" class="section reveal">
+        <div class="section-tag">ABOUT US</div>
+        <h2>Your Trusted Logistics Partner</h2>
+        <p>
+          We deliver end-to-end logistics and freight solutions with a focus on
+          reliability, efficiency, secure handling, and long-term partnerships.
+        </p>
+       </section>
+
+<!-- =========================================================
+     FRIGATE SHIPPING GROUP
+     OUR SERVICES — FULLY ISOLATED SECTION
+     
+     IMPORTANT:
+     All classes, IDs, variables and JavaScript are uniquely
+     prefixed with "fsg-services-" to avoid conflicts.
+========================================================= -->
+
+
+<!-- ================= SECTION DIVIDER ================= -->
+
+<div class="fsg-services-divider">
+  <span></span>
+</div>
+
+
+<!-- ================= OUR SERVICES ================= -->
+
+<section class="fsg-services-section" id="fsg-services-section">
+
+  <div class="fsg-services-container">
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="fsg-services-header fsg-services-reveal">
+
+      <div class="fsg-services-label">
+        <span></span>
+        OUR SERVICES
+      </div>
+
+      <h2>
+        Logistics Solutions
+        <strong>Built Around Your Business.</strong>
+      </h2>
+
+      <p>
+        From global freight to final delivery, we provide reliable,
+        secure, and efficient logistics solutions designed to keep
+        your business moving.
+      </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         SERVICES GRID
+    ====================================================== -->
+
+    <div class="fsg-services-grid">
+
+
+      <!-- ===================================================
+           01 — OCEAN FREIGHT
+      ==================================================== -->
+
+      <article
+        class="fsg-services-card fsg-services-reveal"
+        data-fsg-service="ocean"
+      >
+
+        <div class="fsg-services-card-top">
+
+          <div class="fsg-services-icon">
+
+            <!-- Ship Icon -->
+
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+
+              <path
+                d="M8 39h48l-5 10H13L8 39Z"
+              />
+
+              <path
+                d="M16 39V22h32v17"
+              />
+
+              <path
+                d="M25 22V13h14v9"
+              />
+
+              <path
+                d="M7 50c4 4 8 4 12 0
+                   4 4 8 4 12 0
+                   4 4 8 4 12 0
+                   4 4 8 4 14 0"
+              />
+
+            </svg>
+
+          </div>
+
+          <span class="fsg-services-number">
+            01
+          </span>
+
+        </div>
+
+
+        <h3>
+          Ocean Freight
+        </h3>
+
+
+        <p>
+          At Frigate Shipping Group, we deliver world-class ocean
+          freight solutions tailored to your specific cargo needs.
+          We specialize strictly in Full Container Load (FCL)
+          shipments, offering a comprehensive range of equipment
+          to accommodate any cargo type.
+        </p>
+
+
+        <div class="fsg-services-card-footer">
+          <span>FCL • Dry • Reefer</span>
+          <span class="fsg-services-arrow">↗</span>
+        </div>
+
+      </article>
+
+
+
+      <!-- ===================================================
+           02 — AIR FREIGHT
+      ==================================================== -->
+
+      <article
+        class="fsg-services-card fsg-services-reveal"
+        data-fsg-service="air"
+      >
+
+        <div class="fsg-services-card-top">
+
+          <div class="fsg-services-icon">
+
+            <!-- Airplane Icon -->
+
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+
+              <path
+                d="M7 35l21-5 12-21
+                   6 2-5 22 16 6
+                   c3 1 3 5 0 6l-17 2
+                   -9 12-5-2 4-11-20-2
+                   -6 5-4-4 7-10Z"
+              />
+
+            </svg>
+
+          </div>
+
+          <span class="fsg-services-number">
+            02
+          </span>
+
+        </div>
+
+
+        <h3>
+          Air Freight
+        </h3>
+
+
+        <p>
+          When time is of the essence, our expedited air freight
+          services ensure your most critical shipments take flight
+          immediately. We partner with top global air carriers to
+          guarantee rapid transit times, maximum security, and
+          prioritized handling for your time-sensitive cargo worldwide.
+        </p>
+
+
+        <div class="fsg-services-card-footer">
+          <span>Fast • Secure • Global</span>
+          <span class="fsg-services-arrow">↗</span>
+        </div>
+
+      </article>
+
+
+
+      <!-- ===================================================
+           03 — LAND TRANSPORT
+      ==================================================== -->
+
+      <article
+        class="fsg-services-card fsg-services-reveal"
+        data-fsg-service="land"
+      >
+
+        <div class="fsg-services-card-top">
+
+          <div class="fsg-services-icon">
+
+            <!-- Truck Icon -->
+
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+
+              <path
+                d="M7 17h34v27H7V17Z"
+              />
+
+              <path
+                d="M41 27h9l7 8v9H41V27Z"
+              />
+
+              <circle cx="18" cy="47" r="6" />
+              <circle cx="48" cy="47" r="6" />
+
+              <path
+                d="M41 35h14"
+              />
+
+            </svg>
+
+          </div>
+
+          <span class="fsg-services-number">
+            03
+          </span>
+
+        </div>
+
+
+        <h3>
+          Land Transport
+        </h3>
+
+
+        <p>
+          Connecting your business beyond the ports. Our comprehensive
+          overland transportation services feature a highly reliable
+          trucking network dedicated to safe, punctual, and flexible
+          regional distribution, cross-border transport, and seamless
+          door-to-door delivery.
+        </p>
+
+
+        <div class="fsg-services-card-footer">
+          <span>Regional • Cross-Border</span>
+          <span class="fsg-services-arrow">↗</span>
+        </div>
+
+      </article>
+
+
+
+      <!-- ===================================================
+           04 — CUSTOMS CLEARANCE
+      ==================================================== -->
+
+      <article
+        class="fsg-services-card fsg-services-reveal"
+        data-fsg-service="customs"
+      >
+
+        <div class="fsg-services-card-top">
+
+          <div class="fsg-services-icon">
+
+            <!-- Shield Icon -->
+
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+
+              <path
+                d="M32 7l22 8v15
+                   c0 14-9 23-22 28
+                   C19 53 10 44 10 30V15l22-8Z"
+              />
+
+              <path
+                d="M21 32l7 7 15-16"
+              />
+
+            </svg>
+
+          </div>
+
+          <span class="fsg-services-number">
+            04
+          </span>
+
+        </div>
+
+
+        <h3>
+          Customs Clearance
+        </h3>
+
+
+        <p>
+          Navigating customs regulations can be complex, but our
+          expert team ensures a smooth and hassle-free process.
+          We handle all necessary documentation, compliance checks,
+          and regulatory requirements to clear your shipments swiftly,
+          avoiding unnecessary delays at borders and ports.
+        </p>
+
+
+        <div class="fsg-services-card-footer">
+          <span>Compliance • Documentation</span>
+          <span class="fsg-services-arrow">↗</span>
+        </div>
+
+      </article>
+
+
+
+      <!-- ===================================================
+           05 — CONTAINER FUMIGATION
+      ==================================================== -->
+
+      <article
+        class="fsg-services-card fsg-services-reveal"
+        data-fsg-service="fumigation"
+      >
+
+        <div class="fsg-services-card-top">
+
+          <div class="fsg-services-icon">
+
+            <!-- Container / Protection Icon -->
+
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+
+              <path
+                d="M9 16h46v34H9V16Z"
+              />
+
+              <path
+                d="M9 25h46
+                   M20 16v34
+                   M32 16v34
+                   M44 16v34"
+              />
+
+              <path
+                d="M32 7v9
+                   M27 11l5-5 5 5"
+              />
+
+            </svg>
+
+          </div>
+
+          <span class="fsg-services-number">
+            05
+          </span>
+
+        </div>
+
+
+        <h3>
+          Container Fumigation
+        </h3>
+
+
+        <p>
+          To protect your agricultural and sensitive cargo and comply
+          with international phytosanitary standards, we provide
+          professional container fumigation services. Our certified
+          procedures eliminate pests and ensure your shipments meet
+          all global import and export regulations safely and effectively.
+        </p>
+
+
+        <div class="fsg-services-card-footer">
+          <span>Certified • Safe • Compliant</span>
+          <span class="fsg-services-arrow">↗</span>
+        </div>
+
+      </article>
+
+
+
+      <!-- ===================================================
+           06 — WAREHOUSING
+      ==================================================== -->
+
+      <article
+        class="fsg-services-card fsg-services-reveal"
+        data-fsg-service="warehouse"
+      >
+
+        <div class="fsg-services-card-top">
+
+          <div class="fsg-services-icon">
+
+            <!-- Warehouse Icon -->
+
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+
+              <path
+                d="M7 25L32 10l25 15v29H7V25Z"
+              />
+
+              <path
+                d="M20 54V33h24v21"
+              />
+
+              <path
+                d="M15 27h34"
+              />
+
+            </svg>
+
+          </div>
+
+          <span class="fsg-services-number">
+            06
+          </span>
+
+        </div>
+
+
+        <h3>
+          Warehousing & Distribution
+        </h3>
+
+
+        <p>
+          We offer secure, scalable warehousing facilities designed
+          to optimize your inventory management and safeguard your
+          cargo. Coupled with our integrated distribution services,
+          we ensure your products are efficiently sorted, handled,
+          and delivered to their final destinations.
+        </p>
+
+
+        <div class="fsg-services-card-footer">
+          <span>Storage • Inventory • Distribution</span>
+          <span class="fsg-services-arrow">↗</span>
+        </div>
+
+      </article>
+
+
+
+      <!-- ===================================================
+           07 — SUPPLY CHAIN MANAGEMENT
+      ==================================================== -->
+
+      <article
+        class="fsg-services-card fsg-services-reveal"
+        data-fsg-service="supply-chain"
+      >
+
+        <div class="fsg-services-card-top">
+
+          <div class="fsg-services-icon">
+
+            <!-- Supply Chain Icon -->
+
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+
+              <circle cx="17" cy="32" r="8" />
+              <circle cx="47" cy="17" r="8" />
+              <circle cx="47" cy="47" r="8" />
+
+              <path
+                d="M24 28l16-8
+                   M24 36l16 8"
+              />
+
+            </svg>
+
+          </div>
+
+          <span class="fsg-services-number">
+            07
+          </span>
+
+        </div>
+
+
+        <h3>
+          Supply Chain Management
+        </h3>
+
+
+        <p>
+          Our comprehensive supply chain management solutions provide
+          end-to-end visibility and control over your logistics operations.
+          We analyze, design, and optimize your supply chain processes
+          to reduce costs, enhance efficiency, and ensure a seamless,
+          uninterrupted flow of goods from the manufacturer directly
+          to the end consumer.
+        </p>
+
+
+        <div class="fsg-services-card-footer">
+          <span>Visibility • Optimization • Control</span>
+          <span class="fsg-services-arrow">↗</span>
+        </div>
+
+      </article>
+
+
+
+      <!-- ===================================================
+           08 — TRACKING & VISIBILITY
+      ==================================================== -->
+
+      <article
+        class="fsg-services-card fsg-services-reveal"
+        data-fsg-service="tracking"
+      >
+
+        <div class="fsg-services-card-top">
+
+          <div class="fsg-services-icon">
+
+            <!-- Tracking Icon -->
+
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+
+              <circle
+                cx="32"
+                cy="28"
+                r="17"
+              />
+
+              <path
+                d="M32 11v17
+                   l10 8"
+              />
+
+              <path
+                d="M12 50h40"
+              />
+
+              <path
+                d="M19 50v-7
+                   M28 50v-11
+                   M37 50v-6
+                   M46 50v-15"
+              />
+
+            </svg>
+
+          </div>
+
+          <span class="fsg-services-number">
+            08
+          </span>
+
+        </div>
+
+
+        <h3>
+          Tracking & Visibility
+        </h3>
+
+
+        <p>
+          Empowering our clients with advanced, real-time tracking
+          and complete visibility over their supply chain. We keep
+          you proactively informed about the exact status and precise
+          location of your shipments at every stage of the journey,
+          ensuring peace of mind from departure to final delivery.
+        </p>
+
+
+        <div class="fsg-services-card-footer">
+          <span>Real-Time • Visibility • Tracking</span>
+          <span class="fsg-services-arrow">↗</span>
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SECTION DIVIDER ================= -->
+
+
+
+<style>
+
+/* =========================================================
+   FRIGATE SHIPPING GROUP
+   OUR SERVICES — ISOLATED CSS
+========================================================= */
+
+.fsg-services-section {
+
+  --fsg-services-blue: #0758c9;
+  --fsg-services-dark: #10213a;
+  --fsg-services-text: #64748b;
+  --fsg-services-border: #dce4ed;
+  --fsg-services-background: #f7faff;
+  --fsg-services-white: #ffffff;
+
+  position: relative;
+
+  width: 100%;
+
+  padding: 115px 6%;
+
+  background: var(--fsg-services-background);
+
+  overflow: hidden;
+
+}
+
+
+/* =========================================================
+   BACKGROUND DECORATION
+========================================================= */
+
+.fsg-services-section::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  top: -280px;
+  right: -220px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(7, 88, 201, 0.055);
+
+  pointer-events: none;
+
+}
+
+
+.fsg-services-section::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 360px;
+  height: 360px;
+
+  bottom: -230px;
+  left: -180px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(7, 88, 201, 0.035);
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.fsg-services-divider {
+
+  width: 100%;
+
+  height: 70px;
+
+  background: #ffffff;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+.fsg-services-divider span {
+
+  display: block;
+
+  width: 65px;
+
+  height: 3px;
+
+  border-radius: 20px;
+
+  background: #0758c9;
+
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.fsg-services-container {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  max-width: 1380px;
+
+  margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.fsg-services-header {
+
+  max-width: 850px;
+
+  margin: 0 auto 70px;
+
+  text-align: center;
+
+}
+
+
+.fsg-services-label {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 13px;
+
+  margin-bottom: 22px;
+
+  color: #0758c9;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+}
+
+
+.fsg-services-label span {
+
+  width: 40px;
+
+  height: 3px;
+
+  display: block;
+
+  border-radius: 20px;
+
+  background: #0758c9;
+
+}
+
+
+.fsg-services-header h2 {
+
+  margin: 0;
+
+  color: #10213a;
+
+  font-size: clamp(40px, 4.5vw, 64px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2.5px;
+
+  font-weight: 800;
+
+}
+
+
+.fsg-services-header h2 strong {
+
+  display: block;
+
+  color: #0758c9;
+
+  font-weight: 800;
+
+}
+
+
+.fsg-services-header p {
+
+  max-width: 720px;
+
+  margin: 25px auto 0;
+
+  color: #64748b;
+
+  font-size: 17px;
+
+  line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   SERVICES GRID
+========================================================= */
+
+.fsg-services-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 18px;
+
+}
+
+
+/* =========================================================
+   SERVICE CARD
+========================================================= */
+
+.fsg-services-card {
+
+  position: relative;
+
+  min-height: 470px;
+
+  padding: 30px 27px 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5ebf2;
+
+  border-radius: 14px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  transition:
+    transform .45s cubic-bezier(.2,.7,.2,1),
+    box-shadow .45s ease,
+    border-color .45s ease;
+
+}
+
+
+/* Blue top line */
+
+.fsg-services-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  height: 3px;
+
+  background: #0758c9;
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition:
+    transform .45s cubic-bezier(.2,.7,.2,1);
+
+}
+
+
+.fsg-services-card:hover {
+
+  transform: translateY(-9px);
+
+  border-color: rgba(7, 88, 201, .2);
+
+  box-shadow:
+    0 20px 45px rgba(16, 33, 58, .11);
+
+}
+
+
+.fsg-services-card:hover::before {
+
+  transform: scaleX(1);
+
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.fsg-services-card-top {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+
+}
+
+
+.fsg-services-icon {
+
+  width: 58px;
+
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: #edf5ff;
+
+  color: #0758c9;
+
+  transition:
+    background .35s ease,
+    transform .35s ease;
+
+}
+
+
+.fsg-services-icon svg {
+
+  width: 31px;
+
+  height: 31px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 2.4;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+}
+
+
+.fsg-services-card:hover
+.fsg-services-icon {
+
+  background: #0758c9;
+
+  color: #ffffff;
+
+  transform: translateY(-3px);
+
+}
+
+
+.fsg-services-number {
+
+  color: #a8b5c5;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+}
+
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.fsg-services-card h3 {
+
+  margin: 0 0 14px;
+
+  color: #10213a;
+
+  font-size: 21px;
+
+  line-height: 1.25;
+
+  font-weight: 800;
+
+  transition: color .3s ease;
+
+}
+
+
+.fsg-services-card:hover h3 {
+
+  color: #0758c9;
+
+}
+
+
+/* =========================================================
+   CARD DESCRIPTION
+========================================================= */
+
+.fsg-services-card p {
+
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   CARD FOOTER
+========================================================= */
+
+.fsg-services-card-footer {
+
+  margin-top: auto;
+
+  padding-top: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  border-top: 1px solid #edf1f5;
+
+}
+
+
+.fsg-services-card-footer span:first-child {
+
+  color: #8a98a9;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  line-height: 1.4;
+
+}
+
+
+.fsg-services-arrow {
+
+  width: 34px;
+
+  height: 34px;
+
+  flex: 0 0 34px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f0f5fb;
+
+  color: #0758c9;
+
+  font-size: 17px;
+
+  transition:
+    background .3s ease,
+    color .3s ease,
+    transform .3s ease;
+
+}
+
+
+.fsg-services-card:hover
+.fsg-services-arrow {
+
+  background: #0758c9;
+
+  color: #ffffff;
+
+  transform: rotate(45deg);
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.fsg-services-reveal {
+
+  opacity: 0;
+
+  transform: translateY(35px);
+
+  transition:
+    opacity .75s ease,
+    transform .75s cubic-bezier(.2,.7,.2,1);
+
+}
+
+
+.fsg-services-reveal.fsg-services-visible {
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+}
+
+
+/* Stagger */
+
+.fsg-services-card:nth-child(1) {
+  transition-delay: .03s;
+}
+
+.fsg-services-card:nth-child(2) {
+  transition-delay: .08s;
+}
+
+.fsg-services-card:nth-child(3) {
+  transition-delay: .13s;
+}
+
+.fsg-services-card:nth-child(4) {
+  transition-delay: .18s;
+}
+
+.fsg-services-card:nth-child(5) {
+  transition-delay: .23s;
+}
+
+.fsg-services-card:nth-child(6) {
+  transition-delay: .28s;
+}
+
+.fsg-services-card:nth-child(7) {
+  transition-delay: .33s;
+}
+
+.fsg-services-card:nth-child(8) {
+  transition-delay: .38s;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1150px) {
+
+  .fsg-services-section {
+
+    padding: 95px 5%;
+
+  }
+
+
+  .fsg-services-grid {
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+  }
+
+
+  .fsg-services-card {
+
+    min-height: 430px;
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .fsg-services-divider {
+
+    height: 45px;
+
+  }
+
+
+  .fsg-services-divider span {
+
+    width: 45px;
+
+    height: 2px;
+
+  }
+
+
+  .fsg-services-section {
+
+    padding: 70px 18px;
+
+  }
+
+
+  .fsg-services-header {
+
+    margin-bottom: 45px;
+
+  }
+
+
+  .fsg-services-label {
+
+    font-size: 11px;
+
+    letter-spacing: 1.6px;
+
+    margin-bottom: 18px;
+
+  }
+
+
+  .fsg-services-label span {
+
+    width: 30px;
+
+    height: 2px;
+
+  }
+
+
+  .fsg-services-header h2 {
+
+    font-size: clamp(34px, 10vw, 45px);
+
+    line-height: 1.08;
+
+    letter-spacing: -1.5px;
+
+  }
+
+
+  .fsg-services-header p {
+
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+  }
+
+
+  .fsg-services-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+
+  }
+
+
+  .fsg-services-card {
+
+    min-height: auto;
+
+    padding: 25px 22px 21px;
+
+    border-radius: 13px;
+
+  }
+
+
+  .fsg-services-card-top {
+
+    margin-bottom: 23px;
+
+  }
+
+
+  .fsg-services-icon {
+
+    width: 53px;
+
+    height: 53px;
+
+  }
+
+
+  .fsg-services-icon svg {
+
+    width: 28px;
+
+    height: 28px;
+
+  }
+
+
+  .fsg-services-card h3 {
+
+    font-size: 19px;
+
+    margin-bottom: 11px;
+
+  }
+
+
+  .fsg-services-card p {
+
+    font-size: 14px;
+
+    line-height: 1.75;
+
+  }
+
+
+  .fsg-services-card-footer {
+
+    margin-top: 25px;
+
+    padding-top: 18px;
+
+  }
+
+
+  .fsg-services-card-footer span:first-child {
+
+    font-size: 10px;
+
+  }
+
+
+  .fsg-services-arrow {
+
+    width: 31px;
+
+    height: 31px;
+
+    flex-basis: 31px;
+
+  }
+
+
+  /* Disable large hover movement on touch screens */
+
+  .fsg-services-card:hover {
+
+    transform: none;
+
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .fsg-services-card,
+  .fsg-services-reveal,
+  .fsg-services-icon,
+  .fsg-services-arrow,
+  .fsg-services-card::before {
+
+    transition: none !important;
+
+    animation: none !important;
+
+  }
+
+}
+
+</style>
+
+
+<script>
+
+/* =========================================================
+   FRIGATE SHIPPING GROUP
+   OUR SERVICES — ISOLATED JAVASCRIPT
+
+   Everything is wrapped inside an IIFE so no variables
+   are exposed globally and nothing conflicts with the
+   rest of the website.
+========================================================= */
+
+(function () {
+
+  "use strict";
+
+
+  /* =======================================================
+     UNIQUE VARIABLES
+  ======================================================= */
+
+  const fsgServicesSection =
+    document.getElementById(
+      "fsg-services-section"
+    );
+
+
+  const fsgServicesRevealItems =
+    document.querySelectorAll(
+      "#fsg-services-section .fsg-services-reveal"
+    );
+
+
+  /* =======================================================
+     SAFETY CHECK
+  ======================================================= */
+
+  if (!fsgServicesSection) {
+    return;
+  }
+
+
+  /* =======================================================
+     SCROLL REVEAL
+  ======================================================= */
+
+  const fsgServicesObserver =
+    new IntersectionObserver(
+
+      function (fsgServicesEntries) {
+
+        fsgServicesEntries.forEach(
+
+          function (fsgServicesEntry) {
+
+            if (
+              fsgServicesEntry.isIntersecting
+            ) {
+
+              fsgServicesEntry.target.classList.add(
+                "fsg-services-visible"
+              );
+
+            }
+
+          }
+
+        );
+
+      },
+
+      {
+        threshold: 0.10,
+
+        rootMargin: "0px 0px -40px 0px"
+
+      }
+
+    );
+
+
+  fsgServicesRevealItems.forEach(
+
+    function (fsgServicesItem) {
+
+      fsgServicesObserver.observe(
+        fsgServicesItem
+      );
+
+    }
+
+  );
+
+
+})();
+
+</script>
+
+
+<!--
+      <section id="values" class="section reveal" style="background: #f7faff">
+        <div class="section-tag">VISION & VALUES</div>
+        <h2>Moving Business Forward</h2>
+        <p>
+          Our goal is to make global freight simpler, more reliable, and more
+          transparent for every business we serve.
+        </p>
+      </section> الفيجن هنا -->
+<!-- =========================================================
+     FRIGATE SHIPPING GROUP — OUR VISION SECTION
+     HTML + CSS + JAVASCRIPT — ALL IN ONE
+========================================================= -->
+
+
+
+<section class="frigate-vision" id="vision">
+
+  <div class="frigate-vision-container">
+
+    <!-- ================= LEFT SIDE ================= -->
+
+    <div class="frigate-vision-intro">
+
+      <div class="frigate-vision-label">
+        <span></span>
+        OUR VISION
+      </div>
+
+      <h2>
+        Shaping the Future of
+        <strong>Global Logistics.</strong>
+      </h2>
+
+      <p class="frigate-vision-subtitle">
+        Connecting businesses to a faster, safer, and more efficient
+        global supply chain.
+      </p>
+
+      <div class="frigate-vision-mark">
+        <span>01</span>
+        <i></i>
+        <span>04</span>
+      </div>
+
+    </div>
+
+
+    <!-- ================= RIGHT SIDE ================= -->
+
+    <div class="frigate-vision-content">
+
+      <!-- 01 -->
+
+      <article class="frigate-vision-card">
+
+        <div class="frigate-vision-number">
+          01
+        </div>
+
+        <div class="frigate-vision-card-content">
+
+          <h3>
+            Global Leadership
+          </h3>
+
+          <p>
+            Our vision is to become a leading freight and logistics provider
+            that drives supply chain excellence and efficiency across global
+            markets.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- 02 -->
+
+      <article class="frigate-vision-card">
+
+        <div class="frigate-vision-number">
+          02
+        </div>
+
+        <div class="frigate-vision-card-content">
+
+          <h3>
+            Empowering Businesses
+          </h3>
+
+          <p>
+            We aim to empower businesses by delivering secure, innovative,
+            and reliable shipping solutions that support long-term success
+            and sustainable growth.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- 03 -->
+
+      <article class="frigate-vision-card">
+
+        <div class="frigate-vision-number">
+          03
+        </div>
+
+        <div class="frigate-vision-card-content">
+
+          <h3>
+            Trusted Partnerships
+          </h3>
+
+          <p>
+            We believe that seamless logistics is a key enabler for global
+            trade and competitive advantage. Through continuous optimization
+            and operational excellence, we help organizations navigate
+            evolving global markets with confidence.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- 04 -->
+
+      <article class="frigate-vision-card">
+
+        <div class="frigate-vision-number">
+          04
+        </div>
+
+        <div class="frigate-vision-card-content">
+
+          <h3>
+            Excellence & Innovation
+          </h3>
+
+          <p>
+            We are committed to staying at the forefront of global freight
+            advancements while maintaining the highest standards of safety,
+            reliability, and cost-efficiency. Our vision is to shape a
+            faster, more secure, and seamlessly connected global supply chain
+            for businesses worldwide.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+<div class="frigate-vision-divider"></div>
+
+
+<style>
+
+/* =========================================================
+   RESET — ONLY FOR THIS SECTION
+========================================================= */
+
+.frigate-vision,
+.frigate-vision *,
+.frigate-vision-divider {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SECTION DIVIDER
+========================================================= */
+
+.frigate-vision-divider {
+
+  width: 100%;
+  height: 70px;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+}
+
+
+/* الخط الصغير */
+
+.frigate-vision-divider::after {
+
+  content: "";
+
+  width: 65px;
+  height: 3px;
+
+  background: #0758c9;
+
+  border-radius: 20px;
+
+  opacity: 0.9;
+
+}
+
+
+/* =========================================================
+   MAIN SECTION
+========================================================= */
+
+.frigate-vision {
+
+  width: 100%;
+
+  position: relative;
+
+  padding: 115px 6%;
+
+  background: #f7faff;
+
+  overflow: hidden;
+
+}
+
+
+/* =========================================================
+   BACKGROUND DECORATION
+========================================================= */
+
+.frigate-vision::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  top: -300px;
+  right: -220px;
+
+  border-radius: 50%;
+
+  background: rgba(7, 88, 201, 0.055);
+
+  pointer-events: none;
+
+}
+
+
+.frigate-vision::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 360px;
+  height: 360px;
+
+  bottom: -230px;
+  left: -190px;
+
+  border-radius: 50%;
+
+  background: rgba(7, 88, 201, 0.035);
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.frigate-vision-container {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  max-width: 1350px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(300px, 0.85fr)
+    minmax(0, 1.15fr);
+
+  gap: 90px;
+
+  align-items: center;
+
+}
+
+
+/* =========================================================
+   LEFT SIDE
+========================================================= */
+
+.frigate-vision-intro {
+
+  width: 100%;
+
+}
+
+
+.frigate-vision-label {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 24px;
+
+  color: #0758c9;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+}
+
+
+.frigate-vision-label span {
+
+  width: 40px;
+  height: 3px;
+
+  display: block;
+
+  background: #0758c9;
+
+  border-radius: 10px;
+
+}
+
+
+.frigate-vision-intro h2 {
+
+  margin: 0;
+
+  color: #10213a;
+
+  font-size: clamp(42px, 4.2vw, 64px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2.5px;
+
+  font-weight: 800;
+
+}
+
+
+.frigate-vision-intro h2 strong {
+
+  display: block;
+
+  color: #0758c9;
+
+  font-weight: 800;
+
+}
+
+
+.frigate-vision-subtitle {
+
+  max-width: 500px;
+
+  margin: 28px 0 0;
+
+  color: #64748b;
+
+  font-size: 18px;
+
+  line-height: 1.75;
+
+}
+
+
+/* =========================================================
+   DECORATIVE MARK
+========================================================= */
+
+.frigate-vision-mark {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-top: 65px;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+}
+
+
+.frigate-vision-mark i {
+
+  width: 75px;
+
+  height: 1px;
+
+  display: block;
+
+  background: #cbd5e1;
+
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.frigate-vision-content {
+
+  width: 100%;
+
+  border-top: 1px solid #dce4ed;
+
+}
+
+
+/* =========================================================
+   VISION CARD
+========================================================= */
+
+.frigate-vision-card {
+
+  position: relative;
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: 55px minmax(0, 1fr);
+
+  gap: 22px;
+
+  padding: 34px 0;
+
+  border-bottom: 1px solid #dce4ed;
+
+  transition:
+    padding-left .35s ease,
+    background .35s ease;
+
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.frigate-vision-number {
+
+  padding-top: 4px;
+
+  color: #0758c9;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  transition: transform .35s ease;
+
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.frigate-vision-card-content {
+
+  min-width: 0;
+
+}
+
+
+.frigate-vision-card-content h3 {
+
+  margin: 0 0 10px;
+
+  color: #10213a;
+
+  font-size: 23px;
+
+  line-height: 1.3;
+
+  font-weight: 800;
+
+  transition: color .3s ease;
+
+}
+
+
+.frigate-vision-card-content p {
+
+  margin: 0;
+
+  max-width: 700px;
+
+  color: #64748b;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   HOVER LINE
+========================================================= */
+
+.frigate-vision-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: -1px;
+
+  width: 3px;
+
+  background: #0758c9;
+
+  transform: scaleY(0);
+
+  transform-origin: bottom;
+
+  transition: transform .4s ease;
+
+}
+
+
+.frigate-vision-card:hover::before {
+
+  transform: scaleY(1);
+
+}
+
+
+.frigate-vision-card:hover {
+
+  padding-left: 15px;
+
+}
+
+
+.frigate-vision-card:hover
+.frigate-vision-number {
+
+  transform: translateX(4px);
+
+}
+
+
+.frigate-vision-card:hover
+.frigate-vision-card-content h3 {
+
+  color: #0758c9;
+
+}
+
+
+/* =========================================================
+   DESKTOP ANIMATION
+========================================================= */
+
+.frigate-vision-intro,
+.frigate-vision-card {
+
+  opacity: 0;
+
+  transform: translateY(30px);
+
+  transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.2,.7,.2,1);
+
+}
+
+
+.frigate-vision.frigate-visible
+.frigate-vision-intro {
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+}
+
+
+.frigate-vision.frigate-visible
+.frigate-vision-card {
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+}
+
+
+.frigate-vision.frigate-visible
+.frigate-vision-card:nth-child(1) {
+
+  transition-delay: .05s;
+
+}
+
+
+.frigate-vision.frigate-visible
+.frigate-vision-card:nth-child(2) {
+
+  transition-delay: .15s;
+
+}
+
+
+.frigate-vision.frigate-visible
+.frigate-vision-card:nth-child(3) {
+
+  transition-delay: .25s;
+
+}
+
+
+.frigate-vision.frigate-visible
+.frigate-vision-card:nth-child(4) {
+
+  transition-delay: .35s;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .frigate-vision {
+
+    padding: 90px 6%;
+
+  }
+
+
+  .frigate-vision-container {
+
+    grid-template-columns: 1fr;
+
+    gap: 60px;
+
+  }
+
+
+  .frigate-vision-intro {
+
+    text-align: center;
+
+  }
+
+
+  .frigate-vision-label {
+
+    justify-content: center;
+
+  }
+
+
+  .frigate-vision-subtitle {
+
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+
+  .frigate-vision-mark {
+
+    justify-content: center;
+
+    margin-top: 35px;
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  /* SECTION DIVIDER */
+
+  .frigate-vision-divider {
+
+    height: 45px;
+
+  }
+
+
+  .frigate-vision-divider::after {
+
+    width: 45px;
+
+    height: 2px;
+
+  }
+
+
+  /* MAIN SECTION */
+
+  .frigate-vision {
+
+    padding: 65px 20px;
+
+  }
+
+
+  /* LABEL */
+
+  .frigate-vision-label {
+
+    margin-bottom: 18px;
+
+    font-size: 11px;
+
+    letter-spacing: 1.6px;
+
+  }
+
+
+  .frigate-vision-label span {
+
+    width: 30px;
+
+    height: 2px;
+
+  }
+
+
+  /* TITLE */
+
+  .frigate-vision-intro h2 {
+
+    max-width: 420px;
+
+    margin: 0 auto;
+
+    font-size: clamp(34px, 10vw, 45px);
+
+    line-height: 1.08;
+
+    letter-spacing: -1.5px;
+
+  }
+
+
+  /* SUBTITLE */
+
+  .frigate-vision-subtitle {
+
+    max-width: 390px;
+
+    margin: 21px auto 0;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+  }
+
+
+  /* MARK */
+
+  .frigate-vision-mark {
+
+    margin-top: 30px;
+
+    font-size: 11px;
+
+  }
+
+
+  .frigate-vision-mark i {
+
+    width: 50px;
+
+  }
+
+
+  /* CONTENT */
+
+  .frigate-vision-content {
+
+    width: 100%;
+
+  }
+
+
+  /* CARDS */
+
+  .frigate-vision-card {
+
+    grid-template-columns: 38px minmax(0, 1fr);
+
+    gap: 12px;
+
+    padding: 27px 0;
+
+  }
+
+
+  /* NUMBER */
+
+  .frigate-vision-number {
+
+    padding-top: 3px;
+
+    font-size: 12px;
+
+  }
+
+
+  /* CARD TITLE */
+
+  .frigate-vision-card-content h3 {
+
+    margin-bottom: 9px;
+
+    font-size: 18px;
+
+    line-height: 1.35;
+
+  }
+
+
+  /* CARD TEXT */
+
+  .frigate-vision-card-content p {
+
+    font-size: 14px;
+
+    line-height: 1.75;
+
+  }
+
+
+  /* MOBILE HOVER */
+
+  .frigate-vision-card:hover {
+
+    padding-left: 5px;
+
+  }
+
+}
+
+</style>
+
+
+<script>
+
+/* =========================================================
+   OUR VISION SCROLL REVEAL
+========================================================= */
+
+(function () {
+
+  const visionSection =
+    document.querySelector(".frigate-vision");
+
+
+  if (!visionSection) return;
+
+
+  const visionObserver =
+    new IntersectionObserver(
+
+      function (entries) {
+
+        entries.forEach(function (entry) {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add(
+              "frigate-visible"
+            );
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: 0.12
+      }
+
+    );
+
+
+  visionObserver.observe(visionSection);
+
+})();
+
+</script>
+
+
+
+
+<!--  اولد كونتاكت اص
+      <section id="contact" class="section reveal">
+        <div class="section-tag">CONTACT US</div>
+        <h2>Let's Move Your Business Forward</h2>
+        <p>
+          Tell us what you need to ship and our team will help you find the
+          right logistics solution.
+        </p>
+        <br />
+        <a class="btn btn-primary" href="mailto:info@frigateshipping.com"
+          >Request a Quote <span class="arrow">→</span></a
+        >
+      </section>
+
+       -->
+<!-- =========================================================
+     FRIGATE SHIPPING GROUP
+     OUR MISSION — FULLY ISOLATED SECTION
+
+     IMPORTANT:
+     - Image paths are kept exactly as provided.
+     - All classes are uniquely prefixed with fsgx-mission-
+     - No global CSS selectors are used.
+     - No JavaScript required.
+========================================================= -->
+
+<section
+  class="fsgx-mission-section"
+  id="fsgx-mission"
+>
+
+  <!-- =======================================================
+       SECTION HEADER
+  ======================================================== -->
+
+  <div class="fsgx-mission-header">
+
+    <div class="fsgx-mission-eyebrow">
+
+      <span></span>
+
+      OUR MISSION
+
+    </div>
+
+    <h2 class="fsgx-mission-title">
+
+      What Drives
+      <span>Our Mission.</span>
+
+    </h2>
+
+    <p class="fsgx-mission-intro">
+
+      We are committed to delivering reliable, innovative,
+      and customer-focused logistics solutions that create
+      real value across every shipment.
+
+    </p>
+
+  </div>
+
+
+  <!-- =======================================================
+       MISSION CARDS
+  ======================================================== -->
+
+  <div class="fsgx-mission-grid">
+
+
+    <!-- =====================================================
+         01 — INTEGRITY
+    ====================================================== -->
+
+    <article class="fsgx-mission-card">
+
+      <div class="fsgx-mission-image">
+
+        <img
+          src="ais pic/3 test.png"
+          alt="Integrity"
+          loading="lazy"
+        />
+
+      </div>
+
+      <div class="fsgx-mission-content">
+
+        <div class="fsgx-mission-number">
+          01
+        </div>
+
+        <div class="fsgx-mission-card-text">
+
+          <h3>
+            Integrity
+          </h3>
+
+          <p>
+            Operating with complete honesty and transparency
+            across all our freight services.
+          </p>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- =====================================================
+         02 — INNOVATION
+    ====================================================== -->
+
+    <article class="fsgx-mission-card">
+
+      <div class="fsgx-mission-image">
+
+        <img
+          src="ais pic/4 test.png"
+          alt="Innovation"
+          loading="lazy"
+        />
+
+      </div>
+
+      <div class="fsgx-mission-content">
+
+        <div class="fsgx-mission-number">
+          02
+        </div>
+
+        <div class="fsgx-mission-card-text">
+
+          <h3>
+            Innovation
+          </h3>
+
+          <p>
+            Adopting advanced strategies to provide
+            cutting-edge shipping solutions.
+          </p>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- =====================================================
+         03 — RELIABILITY
+    ====================================================== -->
+
+    <article class="fsgx-mission-card">
+
+      <div class="fsgx-mission-image">
+
+        <img
+          src="ais pic/5 test.png"
+          alt="Reliability"
+          loading="lazy"
+        />
+
+      </div>
+
+      <div class="fsgx-mission-content">
+
+        <div class="fsgx-mission-number">
+          03
+        </div>
+
+        <div class="fsgx-mission-card-text">
+
+          <h3>
+            Reliability
+          </h3>
+
+          <p>
+            Ensuring consistent, safe, and on-time delivery
+            for your cargo.
+          </p>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- =====================================================
+         04 — CUSTOMER FOCUS
+    ====================================================== -->
+
+    <article class="fsgx-mission-card">
+
+      <div class="fsgx-mission-image">
+
+        <img
+          src="ais pic/6 test.png"
+          alt="Customer Focus"
+          loading="lazy"
+        />
+
+      </div>
+
+      <div class="fsgx-mission-content">
+
+        <div class="fsgx-mission-number">
+          04
+        </div>
+
+        <div class="fsgx-mission-card-text">
+
+          <h3>
+            Customer Focus
+          </h3>
+
+          <p>
+            Delivering tailored logistics solutions that
+            prioritize your supply chain needs.
+          </p>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- =====================================================
+         05 — EXCELLENCE
+    ====================================================== -->
+
+    <article class="fsgx-mission-card">
+
+      <div class="fsgx-mission-image">
+
+        <img
+          src="ais pic/7 test.png"
+          alt="Excellence"
+          loading="lazy"
+        />
+
+      </div>
+
+      <div class="fsgx-mission-content">
+
+        <div class="fsgx-mission-number">
+          05
+        </div>
+
+        <div class="fsgx-mission-card-text">
+
+          <h3>
+            Excellence
+          </h3>
+
+          <p>
+            Committing to the highest standards of quality
+            in every shipment.
+          </p>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+
+  <!-- =======================================================
+       BOTTOM STATEMENT
+  ======================================================== -->
+
+  <div class="fsgx-mission-bottom">
+
+    <span class="fsgx-mission-bottom-line"></span>
+
+    <p>
+      Reliable logistics. Meaningful partnerships.
+      <strong>Better results.</strong>
+    </p>
+
+    <span class="fsgx-mission-bottom-line"></span>
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     ISOLATED MISSION CSS
+========================================================= -->
+
+<style>
+
+/* =========================================================
+   MAIN SECTION
+========================================================= */
+
+.fsgx-mission-section {
+
+  --fsgx-mission-blue: #0758c9;
+
+  --fsgx-mission-dark: #10213a;
+
+  --fsgx-mission-text: #64748b;
+
+  --fsgx-mission-light: #f6f9fd;
+
+  --fsgx-mission-border: #e2e9f2;
+
+  --fsgx-mission-white: #ffffff;
+
+  position: relative;
+
+  width: 100%;
+
+  padding:
+    110px 6% 100px;
+
+  background:
+    var(--fsgx-mission-light);
+
+  overflow: hidden;
+
+}
+
+
+/* =========================================================
+   BACKGROUND DECORATION
+========================================================= */
+
+.fsgx-mission-section::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 480px;
+
+  height: 480px;
+
+  top: -280px;
+
+  right: -180px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(7, 88, 201, .055);
+
+  pointer-events: none;
+
+}
+
+
+.fsgx-mission-section::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+
+  height: 350px;
+
+  bottom: -250px;
+
+  left: -180px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(7, 88, 201, .035);
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.fsgx-mission-header {
+
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 760px;
+
+  margin:
+    0 auto 65px;
+
+  text-align: center;
+
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.fsgx-mission-eyebrow {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
+
+  color:
+    var(--fsgx-mission-blue);
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 2.2px;
+
+}
+
+
+.fsgx-mission-eyebrow span {
+
+  width: 42px;
+
+  height: 3px;
+
+  display: block;
+
+  background:
+    var(--fsgx-mission-blue);
+
+  border-radius: 50px;
+
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.fsgx-mission-title {
+
+  margin: 0;
+
+  color:
+    var(--fsgx-mission-dark);
+
+  font-size:
+    clamp(38px, 5vw, 62px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2.5px;
+
+  font-weight: 800;
+
+}
+
+
+.fsgx-mission-title span {
+
+  color:
+    var(--fsgx-mission-blue);
+
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.fsgx-mission-intro {
+
+  max-width: 680px;
+
+  margin:
+    22px auto 0;
+
+  color:
+    var(--fsgx-mission-text);
+
+  font-size: 16px;
+
+  line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.fsgx-mission-grid {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(6, 1fr);
+
+  gap: 22px;
+
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.fsgx-mission-card {
+
+  position: relative;
+
+  min-width: 0;
+
+  grid-column:
+    span 2;
+
+  overflow: hidden;
+
+  background:
+    var(--fsgx-mission-white);
+
+  border:
+    1px solid var(--fsgx-mission-border);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 12px 35px
+    rgba(16, 33, 58, .055);
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
+
+}
+
+
+/* =========================================================
+   4TH CARD
+========================================================= */
+
+.fsgx-mission-card:nth-child(4) {
+
+  grid-column:
+    2 / span 2;
+
+}
+
+
+/* =========================================================
+   5TH CARD
+========================================================= */
+
+.fsgx-mission-card:nth-child(5) {
+
+  grid-column:
+    4 / span 2;
+
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.fsgx-mission-card:hover {
+
+  transform:
+    translateY(-8px);
+
+  border-color:
+    rgba(7, 88, 201, .25);
+
+  box-shadow:
+    0 22px 45px
+    rgba(16, 33, 58, .11);
+
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.fsgx-mission-image {
+
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  background:
+    #eaf1f9;
+
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
+
+.fsgx-mission-image::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 45%,
+      rgba(7, 35, 75, .15)
+    );
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================================
+   IMAGE ITSELF
+========================================================= */
+
+.fsgx-mission-image img {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform .6s ease;
+
+}
+
+
+.fsgx-mission-card:hover
+.fsgx-mission-image img {
+
+  transform:
+    scale(1.055);
+
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.fsgx-mission-content {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 16px;
+
+  padding:
+    25px 24px 27px;
+
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.fsgx-mission-number {
+
+  flex: 0 0 auto;
+
+  color:
+    var(--fsgx-mission-blue);
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+
+  line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.fsgx-mission-card-text {
+
+  min-width: 0;
+
+}
+
+
+.fsgx-mission-card-text h3 {
+
+  margin: 0 0 9px;
+
+  color:
+    var(--fsgx-mission-dark);
+
+  font-size: 21px;
+
+  line-height: 1.2;
+
+  font-weight: 800;
+
+}
+
+
+.fsgx-mission-card-text p {
+
+  margin: 0;
+
+  color:
+    var(--fsgx-mission-text);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   BOTTOM STATEMENT
+========================================================= */
+
+.fsgx-mission-bottom {
+
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 850px;
+
+  margin:
+    65px auto 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 18px;
+
+}
+
+
+.fsgx-mission-bottom-line {
+
+  width: 45px;
+
+  height: 1px;
+
+  flex: 0 0 45px;
+
+  background:
+    #cbd7e5;
+
+}
+
+
+.fsgx-mission-bottom p {
+
+  margin: 0;
+
+  color:
+    #8190a3;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  letter-spacing: .3px;
+
+  text-align: center;
+
+}
+
+
+.fsgx-mission-bottom strong {
+
+  color:
+    var(--fsgx-mission-blue);
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .fsgx-mission-section {
+
+    padding:
+      90px 5% 80px;
+
+  }
+
+
+  .fsgx-mission-grid {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+  }
+
+
+  .fsgx-mission-card {
+
+    grid-column:
+      auto !important;
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .fsgx-mission-section {
+
+    padding:
+      70px 17px 65px;
+
+  }
+
+
+  /* Header */
+
+  .fsgx-mission-header {
+
+    margin-bottom: 40px;
+
+  }
+
+
+  .fsgx-mission-eyebrow {
+
+    gap: 9px;
+
+    margin-bottom: 15px;
+
+    font-size: 9px;
+
+    letter-spacing: 1.7px;
+
+  }
+
+
+  .fsgx-mission-eyebrow span {
+
+    width: 28px;
+
+    height: 2px;
+
+  }
+
+
+  .fsgx-mission-title {
+
+    font-size:
+      clamp(34px, 10vw, 43px);
+
+    line-height: 1.08;
+
+    letter-spacing: -1.5px;
+
+  }
+
+
+  .fsgx-mission-intro {
+
+    margin-top: 17px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+  }
+
+
+  /* Grid */
+
+  .fsgx-mission-grid {
+
+    grid-template-columns:
+      1fr;
+
+    gap: 17px;
+
+  }
+
+
+  /* Card */
+
+  .fsgx-mission-card {
+
+    border-radius: 14px;
+
+  }
+
+
+  .fsgx-mission-card:hover {
+
+    transform:
+      translateY(-3px);
+
+  }
+
+
+  /* Image */
+
+  .fsgx-mission-image {
+
+    aspect-ratio:
+      16 / 9;
+
+  }
+
+
+  /* Content */
+
+  .fsgx-mission-content {
+
+    gap: 13px;
+
+    padding:
+      19px 18px 21px;
+
+  }
+
+
+  .fsgx-mission-number {
+
+    font-size: 9px;
+
+  }
+
+
+  .fsgx-mission-card-text h3 {
+
+    margin-bottom: 7px;
+
+    font-size: 18px;
+
+  }
+
+
+  .fsgx-mission-card-text p {
+
+    font-size: 12px;
+
+    line-height: 1.65;
+
+  }
+
+
+  /* Bottom */
+
+  .fsgx-mission-bottom {
+
+    margin-top: 42px;
+
+    gap: 10px;
+
+  }
+
+
+  .fsgx-mission-bottom-line {
+
+    width: 25px;
+
+    flex-basis: 25px;
+
+  }
+
+
+  .fsgx-mission-bottom p {
+
+    font-size: 9px;
+
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .fsgx-mission-section {
+
+    padding-left: 13px;
+
+    padding-right: 13px;
+
+  }
+
+
+  .fsgx-mission-card-text h3 {
+
+    font-size: 17px;
+
+  }
+
+
+  .fsgx-mission-card-text p {
+
+    font-size: 11px;
+
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .fsgx-mission-section *,
+  .fsgx-mission-section *::before,
+  .fsgx-mission-section *::after {
+
+    transition: none !important;
+
+    animation: none !important;
+
+  }
+
+}
+
+</style>
+<!-- =========================================================
+     FRIGATE SHIPPING GROUP
+     CONTACT US — FULLY ISOLATED
+     
+     Version: 1.0
+     
+     This section is completely isolated:
+     - Unique HTML classes
+     - Unique IDs
+     - Scoped CSS
+     - JavaScript inside IIFE
+     - No external libraries
+     - Connected to Google Apps Script
+========================================================= -->
+
+
+<!-- =========================================================
+     CONTACT SECTION DIVIDER
+========================================================= -->
+
+
+
+
+<!-- =========================================================
+     CONTACT SECTION
+========================================================= -->
+
+<section
+  class="fsgx-contact-section"
+  id="fsgx-contact-section"
+>
+
+  <div class="fsgx-contact-wrapper">
+
+
+    <!-- =====================================================
+         LEFT SIDE
+    ====================================================== -->
+
+    <div class="fsgx-contact-intro">
+
+
+      <!-- Label -->
+
+      <div class="fsgx-contact-eyebrow">
+
+        <span></span>
+
+        CONTACT US
+
+      </div>
+
+
+      <!-- Main Heading -->
+
+      <h2 class="fsgx-contact-title">
+
+        Let's Move Your
+        <strong>Business Forward.</strong>
+
+      </h2>
+
+
+      <!-- Description -->
+
+      <p class="fsgx-contact-description">
+
+        Have a shipment to move or a logistics challenge to solve?
+        Our team is ready to provide a reliable, secure, and
+        efficient solution tailored to your business.
+
+      </p>
+
+
+      <!-- ===================================================
+           CONTACT INFORMATION
+      ==================================================== -->
+
+      <div class="fsgx-contact-information">
+
+
+        <!-- Email -->
+
+        <a
+          class="fsgx-contact-info-item"
+          href="mailto:fares@frigateshipping.org"
+        >
+
+          <div class="fsgx-contact-info-icon">
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+
+              <path
+                d="M3 5h18v14H3z"
+              />
+
+              <path
+                d="m3 6 9 7 9-7"
+              />
+
+            </svg>
+
+          </div>
+
+
+          <div class="fsgx-contact-info-text">
+
+            <span>Email</span>
+
+            <strong>
+              fares@frigateshipping.org
+            </strong>
+
+          </div>
+
+        </a>
+
+
+        <!-- Phone -->
+
+        <a
+          class="fsgx-contact-info-item"
+          href="tel:+201002123456"
+        >
+
+          <div class="fsgx-contact-info-icon">
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+
+              <path
+                d="M6.5 3.5
+                   10 7
+                   7.8 9.8
+                   c1.3 2.7 3.5 4.9 6.2 6.2
+                   L16.8 13.8
+                   20.5 17.5
+                   18.3 20
+                   c-.7.8-2 .9-3 .5
+                   C8.8 17.9 6.1 15.2 3.5 8.7
+                   c-.4-1-.3-2.3.5-3z"
+              />
+
+            </svg>
+
+          </div>
+
+
+          <div class="fsgx-contact-info-text">
+
+            <span>Phone</span>
+
+            <strong>
+              +201002123456
+            </strong>
+
+          </div>
+
+        </a>
+
+
+        <!-- Location -->
+
+        <div
+          class="fsgx-contact-info-item fsgx-contact-info-static"
+        >
+
+          <div class="fsgx-contact-info-icon">
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+
+              <path
+                d="M12 21s7-6.2 7-12
+                   a7 7 0 1 0-14 0
+                   c0 5.8 7 12 7 12z"
+              />
+
+              <circle
+                cx="12"
+                cy="9"
+                r="2.3"
+              />
+
+            </svg>
+
+          </div>
+
+
+          <div class="fsgx-contact-info-text">
+
+            <span>Location</span>
+
+            <strong>
+6 Noah afandy street, Sultan hussien, Alexandria. Egypt.
+            </strong>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- ===================================================
+           TRUST MESSAGE
+      ==================================================== -->
+
+      <div class="fsgx-contact-trust">
+
+        <div class="fsgx-contact-trust-check">
+          ✓
+        </div>
+
+        <div>
+
+          <strong>
+            Reliable. Secure. Professional.
+          </strong>
+
+          <p>
+            Your inquiry will be handled by our logistics team.
+          </p>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         RIGHT SIDE — FORM
+    ====================================================== -->
+
+    <div class="fsgx-contact-form-box">
+
+
+      <!-- Form Header -->
+
+      <div class="fsgx-contact-form-heading">
+
+        <span>
+          REQUEST A QUOTE
+        </span>
+
+        <h3>
+          Tell us what you need.
+        </h3>
+
+        <p>
+          Share a few details about your shipment and
+          we'll get back to you.
+        </p>
+
+      </div>
+
+
+      <!-- ===================================================
+           FORM
+      ==================================================== -->
+
+      <form
+        id="fsgx-contact-form"
+        class="fsgx-contact-form"
+        novalidate
+      >
+
+
+        <!-- ===============================================
+             NAME + COMPANY
+        ================================================ -->
+
+        <div class="fsgx-contact-form-row">
+
+
+          <!-- Full Name -->
+
+          <div class="fsgx-contact-field">
+
+            <label
+              for="fsgx-contact-name"
+            >
+
+              Full Name
+
+              <b>*</b>
+
+            </label>
+
+
+            <input
+              type="text"
+              id="fsgx-contact-name"
+              name="name"
+              placeholder="Your full name"
+              autocomplete="name"
+              required
+            />
+
+          </div>
+
+
+          <!-- Company -->
+
+          <div class="fsgx-contact-field">
+
+            <label
+              for="fsgx-contact-company"
+            >
+
+              Company Name
+
+            </label>
+
+
+            <input
+              type="text"
+              id="fsgx-contact-company"
+              name="company"
+              placeholder="Your company"
+              autocomplete="organization"
+            />
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- ===============================================
+             EMAIL + PHONE
+        ================================================ -->
+
+        <div class="fsgx-contact-form-row">
+
+
+          <!-- Email -->
+
+          <div class="fsgx-contact-field">
+
+            <label
+              for="fsgx-contact-email"
+            >
+
+              Email Address
+
+              <b>*</b>
+
+            </label>
+
+
+            <input
+              type="email"
+              id="fsgx-contact-email"
+              name="email"
+              placeholder="you@company.com"
+              autocomplete="email"
+              required
+            />
+
+          </div>
+
+
+          <!-- Phone -->
+
+          <div class="fsgx-contact-field">
+
+            <label
+              for="fsgx-contact-phone"
+            >
+
+              Phone Number
+
+              <b>*</b>
+
+            </label>
+
+
+            <input
+              type="tel"
+              id="fsgx-contact-phone"
+              name="phone"
+              placeholder="+201002123456"
+              autocomplete="tel"
+              required
+            />
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- ===============================================
+             SERVICE
+        ================================================ -->
+
+        <div class="fsgx-contact-field">
+
+          <label
+            for="fsgx-contact-service"
+          >
+
+            Service Required
+
+            <b>*</b>
+
+          </label>
+
+
+          <select
+            id="fsgx-contact-service"
+            name="service"
+            required
+          >
+
+            <option
+              value=""
+              disabled
+              selected
+            >
+              Select a service
+            </option>
+
+
+            <option value="Ocean Freight">
+              Ocean Freight
+            </option>
+
+
+            <option value="Air Freight">
+              Air Freight
+            </option>
+
+
+            <option value="Land Transport">
+              Land Transport
+            </option>
+
+
+            <option value="Customs Clearance">
+              Customs Clearance
+            </option>
+
+
+            <option value="Container Fumigation">
+              Container Fumigation
+            </option>
+
+
+            <option value="Warehousing & Distribution">
+              Warehousing & Distribution
+            </option>
+
+
+            <option value="Supply Chain Management">
+              Supply Chain Management
+            </option>
+
+
+            <option value="Tracking & Visibility">
+              Tracking & Visibility
+            </option>
+
+
+            <option value="Other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <!-- ===============================================
+             MESSAGE
+        ================================================ -->
+
+        <div class="fsgx-contact-field">
+
+          <label
+            for="fsgx-contact-message"
+          >
+
+            How Can We Help?
+
+            <b>*</b>
+
+          </label>
+
+
+          <textarea
+            id="fsgx-contact-message"
+            name="message"
+            placeholder="Tell us about your shipment, destination, cargo type, or requirements..."
+            rows="5"
+            required
+          ></textarea>
+
+        </div>
+
+
+
+        <!-- ===============================================
+             SUBMIT BUTTON
+        ================================================ -->
+
+        <button
+          type="submit"
+          id="fsgx-contact-submit"
+          class="fsgx-contact-submit"
+        >
+
+          <span class="fsgx-contact-submit-normal">
+
+            Send Request
+
+            <i>→</i>
+
+          </span>
+
+
+          <span class="fsgx-contact-submit-loading">
+
+            Sending...
+
+          </span>
+
+        </button>
+
+
+
+        <!-- ===============================================
+             STATUS
+        ================================================ -->
+
+        <div
+          id="fsgx-contact-status"
+          class="fsgx-contact-status"
+          role="status"
+          aria-live="polite"
+        ></div>
+
+
+        <p class="fsgx-contact-privacy">
+
+          Your information is used only to respond to your
+          logistics inquiry.
+
+        </p>
+
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT SECTION DIVIDER
+========================================================= -->
+
+
+
+
+<!-- =========================================================
+     ISOLATED CSS
+========================================================= -->
+
+<style>
+
+/* =========================================================
+   EVERYTHING IS PREFIXED WITH fsgx-contact-
+========================================================= */
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.fsgx-contact-divider {
+
+  width: 100%;
+
+  height: 75px;
+
+  background: #ffffff;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+.fsgx-contact-divider span {
+
+  width: 65px;
+
+  height: 3px;
+
+  display: block;
+
+  background: #0758c9;
+
+  border-radius: 50px;
+
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.fsgx-contact-section {
+
+  --fsgx-contact-blue: #0758c9;
+
+  --fsgx-contact-dark: #10213a;
+
+  --fsgx-contact-text: #64748b;
+
+  --fsgx-contact-border: #dce4ed;
+
+  --fsgx-contact-bg: #f7faff;
+
+  --fsgx-contact-white: #ffffff;
+
+
+  position: relative;
+
+  width: 100%;
+
+  padding: 115px 6%;
+
+  background:
+    var(--fsgx-contact-bg);
+
+  overflow: hidden;
+
+}
+
+
+/* =========================================================
+   BACKGROUND DECORATIONS
+========================================================= */
+
+.fsgx-contact-section::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 550px;
+
+  height: 550px;
+
+  top: -330px;
+
+  right: -250px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(7, 88, 201, .055);
+
+  pointer-events: none;
+
+}
+
+
+.fsgx-contact-section::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 400px;
+
+  height: 400px;
+
+  bottom: -280px;
+
+  left: -230px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(7, 88, 201, .035);
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================================
+   MAIN WRAPPER
+========================================================= */
+
+.fsgx-contact-wrapper {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(300px, .85fr)
+    minmax(450px, 1.15fr);
+
+  gap: 90px;
+
+  align-items: center;
+
+}
+
+
+/* =========================================================
+   LEFT SIDE
+========================================================= */
+
+.fsgx-contact-intro {
+
+  width: 100%;
+
+}
+
+
+.fsgx-contact-eyebrow {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 23px;
+
+  color:
+    var(--fsgx-contact-blue);
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+}
+
+
+.fsgx-contact-eyebrow span {
+
+  width: 40px;
+
+  height: 3px;
+
+  display: block;
+
+  background:
+    var(--fsgx-contact-blue);
+
+  border-radius: 50px;
+
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.fsgx-contact-title {
+
+  margin: 0;
+
+  color:
+    var(--fsgx-contact-dark);
+
+  font-size:
+    clamp(42px, 4.3vw, 63px);
+
+  line-height: 1.04;
+
+  letter-spacing: -2.5px;
+
+  font-weight: 800;
+
+}
+
+
+.fsgx-contact-title strong {
+
+  display: block;
+
+  color:
+    var(--fsgx-contact-blue);
+
+  font-weight: 800;
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.fsgx-contact-description {
+
+  max-width: 540px;
+
+  margin: 28px 0 0;
+
+  color:
+    var(--fsgx-contact-text);
+
+  font-size: 17px;
+
+  line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.fsgx-contact-information {
+
+  margin-top: 42px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+
+}
+
+
+.fsgx-contact-info-item {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  text-decoration: none;
+
+  color: inherit;
+
+}
+
+
+.fsgx-contact-info-static {
+
+  cursor: default;
+
+}
+
+
+.fsgx-contact-info-icon {
+
+  width: 48px;
+
+  height: 48px;
+
+  flex: 0 0 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color:
+    var(--fsgx-contact-blue);
+
+  background: #eaf3ff;
+
+  border-radius: 11px;
+
+  transition:
+    .3s ease;
+
+}
+
+
+.fsgx-contact-info-icon svg {
+
+  width: 23px;
+
+  height: 23px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.9;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+}
+
+
+.fsgx-contact-info-item:hover
+.fsgx-contact-info-icon {
+
+  color: #ffffff;
+
+  background:
+    var(--fsgx-contact-blue);
+
+  transform:
+    translateY(-3px);
+
+}
+
+
+.fsgx-contact-info-text {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+}
+
+
+.fsgx-contact-info-text span {
+
+  color: #94a3b8;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1.3px;
+
+}
+
+
+.fsgx-contact-info-text strong {
+
+  color:
+    var(--fsgx-contact-dark);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+}
+
+
+/* =========================================================
+   TRUST BOX
+========================================================= */
+
+.fsgx-contact-trust {
+
+  max-width: 500px;
+
+  margin-top: 40px;
+
+  padding: 17px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  border:
+    1px solid #dce8f5;
+
+  border-radius: 11px;
+
+  background:
+    rgba(255,255,255,.65);
+
+}
+
+
+.fsgx-contact-trust-check {
+
+  width: 34px;
+
+  height: 34px;
+
+  flex: 0 0 34px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    var(--fsgx-contact-blue);
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+}
+
+
+.fsgx-contact-trust strong {
+
+  display: block;
+
+  margin-bottom: 3px;
+
+  color:
+    var(--fsgx-contact-dark);
+
+  font-size: 12px;
+
+}
+
+
+.fsgx-contact-trust p {
+
+  margin: 0;
+
+  color:
+    var(--fsgx-contact-text);
+
+  font-size: 11px;
+
+}
+
+
+/* =========================================================
+   FORM BOX
+========================================================= */
+
+.fsgx-contact-form-box {
+
+  width: 100%;
+
+  padding: 38px;
+
+  background:
+    var(--fsgx-contact-white);
+
+  border:
+    1px solid #e3eaf2;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 22px 55px rgba(16,33,58,.08);
+
+}
+
+
+/* =========================================================
+   FORM HEADER
+========================================================= */
+
+.fsgx-contact-form-heading {
+
+  margin-bottom: 28px;
+
+}
+
+
+.fsgx-contact-form-heading > span {
+
+  color:
+    var(--fsgx-contact-blue);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+
+}
+
+
+.fsgx-contact-form-heading h3 {
+
+  margin: 8px 0 7px;
+
+  color:
+    var(--fsgx-contact-dark);
+
+  font-size: 27px;
+
+  line-height: 1.2;
+
+  font-weight: 800;
+
+}
+
+
+.fsgx-contact-form-heading p {
+
+  margin: 0;
+
+  color:
+    var(--fsgx-contact-text);
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   FORM ROW
+========================================================= */
+
+.fsgx-contact-form-row {
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 15px;
+
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.fsgx-contact-field {
+
+  width: 100%;
+
+  margin-bottom: 17px;
+
+}
+
+
+.fsgx-contact-field label {
+
+  display: block;
+
+  margin-bottom: 7px;
+
+  color:
+    var(--fsgx-contact-dark);
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+}
+
+
+.fsgx-contact-field label b {
+
+  color:
+    var(--fsgx-contact-blue);
+
+  font-weight: 800;
+
+}
+
+
+/* =========================================================
+   INPUT / SELECT / TEXTAREA
+========================================================= */
+
+.fsgx-contact-field input,
+.fsgx-contact-field select,
+.fsgx-contact-field textarea {
+
+  width: 100%;
+
+  margin: 0;
+
+  border:
+    1px solid var(--fsgx-contact-border);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #fbfdff;
+
+  color:
+    var(--fsgx-contact-dark);
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+
+}
+
+
+.fsgx-contact-field input,
+.fsgx-contact-field select {
+
+  height: 49px;
+
+  padding:
+    0 13px;
+
+}
+
+
+.fsgx-contact-field textarea {
+
+  min-height: 125px;
+
+  padding: 13px;
+
+  resize: vertical;
+
+  line-height: 1.6;
+
+}
+
+
+.fsgx-contact-field input::placeholder,
+.fsgx-contact-field textarea::placeholder {
+
+  color: #a5b0bd;
+
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.fsgx-contact-field input:focus,
+.fsgx-contact-field select:focus,
+.fsgx-contact-field textarea:focus {
+
+  border-color:
+    var(--fsgx-contact-blue);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(7,88,201,.08);
+
+}
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+.fsgx-contact-submit {
+
+  width: 100%;
+
+  height: 55px;
+
+  margin-top: 3px;
+
+  padding: 0 20px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  cursor: pointer;
+
+  background:
+    var(--fsgx-contact-blue);
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 10px 25px rgba(7,88,201,.18);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    background .3s ease;
+
+}
+
+
+.fsgx-contact-submit:hover {
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 15px 32px rgba(7,88,201,.25);
+
+}
+
+
+.fsgx-contact-submit:disabled {
+
+  cursor: not-allowed;
+
+  opacity: .75;
+
+  transform: none;
+
+}
+
+
+.fsgx-contact-submit-normal {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+}
+
+
+.fsgx-contact-submit-normal i {
+
+  width: 27px;
+
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color:
+    var(--fsgx-contact-blue);
+
+  font-style: normal;
+
+  transition:
+    transform .3s ease;
+
+}
+
+
+.fsgx-contact-submit:hover
+.fsgx-contact-submit-normal i {
+
+  transform:
+    translateX(4px);
+
+}
+
+
+.fsgx-contact-submit-loading {
+
+  display: none;
+
+}
+
+
+/* =========================================================
+   LOADING STATE
+========================================================= */
+
+.fsgx-contact-submit.fsgx-contact-is-loading
+.fsgx-contact-submit-normal {
+
+  display: none;
+
+}
+
+
+.fsgx-contact-submit.fsgx-contact-is-loading
+.fsgx-contact-submit-loading {
+
+  display: block;
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.fsgx-contact-status {
+
+  display: none;
+
+  width: 100%;
+
+  margin-top: 13px;
+
+  padding: 12px 14px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+}
+
+
+.fsgx-contact-status.fsgx-contact-success {
+
+  display: block;
+
+  color: #166534;
+
+  background: #ecfdf3;
+
+  border:
+    1px solid #bbf7d0;
+
+}
+
+
+.fsgx-contact-status.fsgx-contact-error {
+
+  display: block;
+
+  color: #991b1b;
+
+  background: #fef2f2;
+
+  border:
+    1px solid #fecaca;
+
+}
+
+
+/* =========================================================
+   PRIVACY
+========================================================= */
+
+.fsgx-contact-privacy {
+
+  margin: 12px 0 0;
+
+  color: #9aa7b6;
+
+  font-size: 9px;
+
+  line-height: 1.5;
+
+  text-align: center;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .fsgx-contact-section {
+
+    padding:
+      90px 5%;
+
+  }
+
+
+  .fsgx-contact-wrapper {
+
+    grid-template-columns:
+      1fr;
+
+    max-width: 760px;
+
+    gap: 55px;
+
+  }
+
+
+  .fsgx-contact-intro {
+
+    text-align: center;
+
+  }
+
+
+  .fsgx-contact-eyebrow {
+
+    justify-content: center;
+
+  }
+
+
+  .fsgx-contact-description {
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+  }
+
+
+  .fsgx-contact-information {
+
+    width: fit-content;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    text-align: left;
+
+  }
+
+
+  .fsgx-contact-trust {
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    text-align: left;
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+
+  /* Divider */
+
+  .fsgx-contact-divider {
+
+    height: 45px;
+
+  }
+
+
+  .fsgx-contact-divider span {
+
+    width: 45px;
+
+    height: 2px;
+
+  }
+
+
+  /* Section */
+
+  .fsgx-contact-section {
+
+    padding:
+      65px 18px;
+
+  }
+
+
+  /* Eyebrow */
+
+  .fsgx-contact-eyebrow {
+
+    margin-bottom: 18px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+  }
+
+
+  .fsgx-contact-eyebrow span {
+
+    width: 30px;
+
+    height: 2px;
+
+  }
+
+
+  /* Title */
+
+  .fsgx-contact-title {
+
+    font-size:
+      clamp(34px, 10vw, 45px);
+
+    line-height: 1.08;
+
+    letter-spacing: -1.5px;
+
+  }
+
+
+  /* Description */
+
+  .fsgx-contact-description {
+
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+  }
+
+
+  /* Information */
+
+  .fsgx-contact-information {
+
+    width: 100%;
+
+    margin-top: 32px;
+
+    gap: 15px;
+
+  }
+
+
+  .fsgx-contact-info-icon {
+
+    width: 43px;
+
+    height: 43px;
+
+    flex-basis: 43px;
+
+  }
+
+
+  .fsgx-contact-info-icon svg {
+
+    width: 20px;
+
+    height: 20px;
+
+  }
+
+
+  .fsgx-contact-info-text span {
+
+    font-size: 9px;
+
+  }
+
+
+  .fsgx-contact-info-text strong {
+
+    font-size: 12px;
+
+  }
+
+
+  /* Trust */
+
+  .fsgx-contact-trust {
+
+    margin-top: 28px;
+
+    padding: 14px;
+
+  }
+
+
+  /* Form */
+
+  .fsgx-contact-form-box {
+
+    padding:
+      23px 18px;
+
+    border-radius: 14px;
+
+  }
+
+
+  .fsgx-contact-form-heading {
+
+    margin-bottom: 22px;
+
+  }
+
+
+  .fsgx-contact-form-heading h3 {
+
+    font-size: 22px;
+
+  }
+
+
+  .fsgx-contact-form-heading p {
+
+    font-size: 12px;
+
+  }
+
+
+  /* Rows */
+
+  .fsgx-contact-form-row {
+
+    grid-template-columns:
+      1fr;
+
+    gap: 0;
+
+  }
+
+
+  /* Fields */
+
+  .fsgx-contact-field {
+
+    margin-bottom: 15px;
+
+  }
+
+
+  .fsgx-contact-field input,
+  .fsgx-contact-field select {
+
+    height: 48px;
+
+  }
+
+
+  .fsgx-contact-field textarea {
+
+    min-height: 120px;
+
+  }
+
+
+  /* Button */
+
+  .fsgx-contact-submit {
+
+    height: 53px;
+
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .fsgx-contact-section *,
+  .fsgx-contact-section *::before,
+  .fsgx-contact-section *::after {
+
+    transition: none !important;
+
+    animation: none !important;
+
+  }
+
+}
+
+</style>
+
+
+
+<!-- =========================================================
+     ISOLATED JAVASCRIPT
+========================================================= -->
+
+<script>
+
+(function () {
+
+  "use strict";
+
+
+  /* =======================================================
+     CONFIGURATION
+     
+     ده رابط Google Apps Script بتاعك.
+     لا تحتاج لتعديله.
+  ======================================================= */
+
+  const FSGX_CONTACT_CONFIG = {
+
+    googleScriptUrl:
+      "https://script.google.com/macros/s/AKfycbw13uRhvTbvMS78EOqeRPObzF9e_SLVN3IkVfRi8Ag3XMWVwMtumQh5ZKwpR46CdHbgOw/exec"
+
+  };
+
+
+  /* =======================================================
+     GET ELEMENTS
+  ======================================================= */
+
+  const fsgxContactForm =
+    document.getElementById(
+      "fsgx-contact-form"
+    );
+
+
+  const fsgxContactSubmit =
+    document.getElementById(
+      "fsgx-contact-submit"
+    );
+
+
+  const fsgxContactStatus =
+    document.getElementById(
+      "fsgx-contact-status"
+    );
+
+
+  /* =======================================================
+     SAFETY CHECK
+  ======================================================= */
+
+  if (
+    !fsgxContactForm ||
+    !fsgxContactSubmit ||
+    !fsgxContactStatus
+  ) {
+
+    return;
+
+  }
+
+
+  /* =======================================================
+     STATUS FUNCTION
+  ======================================================= */
+
+  const fsgxContactSetStatus =
+    function (
+      fsgxContactMessage,
+      fsgxContactType
+    ) {
+
+      fsgxContactStatus.textContent =
+        fsgxContactMessage;
+
+      fsgxContactStatus.className =
+        "fsgx-contact-status " +
+        fsgxContactType;
+
+    };
+
+
+  /* =======================================================
+     SUBMIT EVENT
+  ======================================================= */
+
+  fsgxContactForm.addEventListener(
+
+    "submit",
+
+    async function (
+      fsgxContactEvent
+    ) {
+
+      fsgxContactEvent.preventDefault();
+
+
+      /* ================================================
+         VALIDATION
+      ================================================= */
+
+      if (
+        !fsgxContactForm.checkValidity()
+      ) {
+
+        fsgxContactForm.reportValidity();
+
+        return;
+
+      }
+
+
+      /* ================================================
+         CLEAR OLD STATUS
+      ================================================= */
+
+      fsgxContactStatus.className =
+        "fsgx-contact-status";
+
+      fsgxContactStatus.textContent =
+        "";
+
+
+      /* ================================================
+         LOADING
+      ================================================= */
+
+      fsgxContactSubmit.disabled =
+        true;
+
+      fsgxContactSubmit.classList.add(
+        "fsgx-contact-is-loading"
+      );
+
+
+      /* ================================================
+         FORM DATA
+      ================================================= */
+
+      const fsgxContactData =
+        new FormData(
+          fsgxContactForm
+        );
+
+
+      /* ================================================
+         ADD TIMESTAMP
+         
+         Google Sheet will receive this too.
+      ================================================= */
+
+      fsgxContactData.append(
+        "timestamp",
+        new Date().toISOString()
+      );
+
+
+      try {
+
+
+        /* ==============================================
+           SEND TO GOOGLE APPS SCRIPT
+        =============================================== */
+
+        await fetch(
+
+          FSGX_CONTACT_CONFIG.googleScriptUrl,
+
+          {
+
+            method: "POST",
+
+            mode: "no-cors",
+
+            body: fsgxContactData
+
+          }
+
+        );
+
+
+        /* ==============================================
+           SUCCESS
+           
+           no-cors means the browser cannot read the
+           server response, but a completed request is
+           treated as successful here.
+        =============================================== */
+
+        fsgxContactSetStatus(
+
+          "Thank you! Your request has been sent successfully. Our team will contact you shortly.",
+
+          "fsgx-contact-success"
+
+        );
+
+
+        /* Clear form */
+
+        fsgxContactForm.reset();
+
+
+      } catch (
+        fsgxContactError
+      ) {
+
+
+        console.error(
+          "FSGX Contact Form Error:",
+          fsgxContactError
+        );
+
+
+        fsgxContactSetStatus(
+
+          "Something went wrong. Please try again or contact us directly.",
+
+          "fsgx-contact-error"
+
+        );
+
+      }
+
+
+      /* ================================================
+         REMOVE LOADING
+      ================================================= */
+
+      fsgxContactSubmit.disabled =
+        false;
+
+      fsgxContactSubmit.classList.remove(
+        "fsgx-contact-is-loading"
+      );
+
+
+    }
+
+  );
+
+
+})();
+
+</script>
+      <div class="spikes pt-20"></div>
+    </section>
+    </main>
+
+  <!-- =========================================================
+     FRIGATE SHIPPING GROUP
+     FOOTER
+     
+     FULLY ISOLATED
+     
+     Includes:
+     - Company Logo
+     - About
+     - Quick Links
+     - Contact Information
+     - Phone
+     - Email
+     - Company Address
+     - LinkedIn
+     - Facebook
+     - Instagram
+     - Back to Top
+========================================================= -->
+
+
+<footer
+  class="fsgx-footer"
+  id="fsgx-footer"
+>
+
+
+  <!-- =====================================================
+       TOP SHIPPING LINE
+  ====================================================== -->
+
+  <div class="fsgx-footer-top-line">
+
+    <div class="fsgx-footer-route">
+
+      <span class="fsgx-footer-route-dot"></span>
+
+      <span class="fsgx-footer-route-line"></span>
+
+      <span class="fsgx-footer-route-plane">
+
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+
+          <path
+            d="M21 3
+               3.8 9.4
+               3.8 11.2
+               10.1 12.5
+               6.7 17.5
+               8.2 18.5
+               13.1 13.1
+               20.7 10.1
+               Z"
+          />
+
+        </svg>
+
+      </span>
+
+      <span class="fsgx-footer-route-line"></span>
+
+      <span class="fsgx-footer-route-dot"></span>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       MAIN FOOTER
+  ====================================================== -->
+
+  <div class="fsgx-footer-main">
+
+    <div class="fsgx-footer-container">
+
+
+      <!-- =================================================
+           COLUMN 01 — COMPANY
+      ================================================== -->
+
+      <div class="fsgx-footer-company">
+
+
+        <!-- Logo -->
+
+        <a
+          href="#"
+          class="fsgx-footer-logo"
+          aria-label="Frigate Shipping Group"
+        >
+
+          <img
+            src="logo.png"
+            alt="Frigate Shipping Group"
+          />
+
+        </a>
+
+
+        <!-- Description -->
+
+        <p class="fsgx-footer-description">
+
+          Reliable freight and logistics solutions
+          connecting businesses to global markets
+          with security, efficiency, and confidence.
+
+        </p>
+
+
+        <!-- Social Media -->
+
+        <div class="fsgx-footer-socials">
+
+
+          <!-- LinkedIn -->
+
+          <a
+            href="https://www.linkedin.com/company/frigate-shipping-group1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fsgx-footer-social"
+            aria-label="LinkedIn"
+          >
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+
+              <path
+                d="M6.5 8.5
+                   H3.5
+                   V20
+                   H6.5
+                   Z"
+              />
+
+              <path
+                d="M5 3.5
+                   A1.75 1.75 0 1 0
+                   5 7
+                   A1.75 1.75 0 1 0
+                   5 3.5
+                   Z"
+              />
+
+              <path
+                d="M10 8.5
+                   H13
+                   V10.2
+                   C13.8 8.9
+                   15.1 8.2
+                   16.7 8.2
+                   C20 8.2
+                   21 10.2
+                   21 13.7
+                   V20
+                   H18
+                   V14.4
+                   C18 13
+                   17.5 11.7
+                   15.9 11.7
+                   C14.3 11.7
+                   13 12.7
+                   13 14.5
+                   V20
+                   H10
+                   Z"
+              />
+
+            </svg>
+
+          </a>
+
+
+          <!-- Facebook -->
+
+          <a
+            href="https://www.facebook.com/share/19ZvsFVX5X/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fsgx-footer-social"
+            aria-label="Facebook"
+          >
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+
+              <path
+                d="M14 8
+                   H16.5
+                   V4.5
+                   H14
+                   C11.2 4.5
+                   9.5 6.2
+                   9.5 9
+                   V11
+                   H7
+                   V14.5
+                   H9.5
+                   V20
+                   H13
+                   V14.5
+                   H16
+                   L16.5 11
+                   H13
+                   V9.3
+                   C13 8.4
+                   13.3 8
+                   14 8
+                   Z"
+              />
+
+            </svg>
+
+          </a>
+
+
+          <!-- Instagram -->
+
+          <!-- <a
+            href="YOUR_INSTAGRAM_URL"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fsgx-footer-social"
+            aria-label="Instagram"
+          >
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+
+              <rect
+                x="3.5"
+                y="3.5"
+                width="17"
+                height="17"
+                rx="4"
+              />
+
+              <circle
+                cx="12"
+                cy="12"
+                r="4"
+              />
+
+              <circle
+                cx="17.5"
+                cy="6.7"
+                r="1"
+                fill="currentColor"
+                stroke="none"
+              />
+
+            </svg>
+
+          </a> -->
+        <a
+            href="https://wa.me/201002123456"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fsgx-footer-social"
+            aria-label="Instagram"
+          >
+
+ <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20.5 11.5a8.5 8.5 0 0 1-12.65 7.45L3.5 20.5l1.6-4.2A8.5 8.5 0 1 1 20.5 11.5Z"></path>
+    <path d="M8.4 8.1c.2-.45.4-.46.75-.47h.55c.18 0 .38.07.5.4l.6 1.45c.08.2.05.36-.07.53l-.48.6c-.12.15-.24.27-.1.52.14.25.62 1 1.33 1.62.9.8 1.66 1.05 1.9 1.17.25.12.4.1.55-.08l.65-.77c.16-.2.32-.25.55-.13l1.38.65c.23.11.38.17.44.28.06.1.06.62-.15 1.12-.2.5-1.08.96-1.48 1-.4.04-.77.18-2.58-.54-2.15-.85-3.54-3.05-3.65-3.2-.1-.14-.87-1.15-.87-2.2 0-1.04.54-1.55.73-1.76Z"></path>
+  </svg>
+
+          </a>
+
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           COLUMN 02 — QUICK LINKS
+      ================================================== -->
+
+      <div class="fsgx-footer-column">
+
+
+        <h3 class="fsgx-footer-heading">
+          Quick Links
+        </h3>
+
+
+        <ul class="fsgx-footer-links">
+
+
+          <li>
+
+            <a href="#about">
+              About Us
+            </a>
+
+          </li>
+
+
+          <li>
+
+            <a href="#services">
+              Our Services
+            </a>
+
+          </li>
+
+
+          <li>
+
+            <a href="#vision">
+              Our Vision
+            </a>
+
+          </li>
+
+
+          <li>
+
+            <a href="#fsgx-mission">
+              Our Mission
+            </a>
+
+          </li>
+
+
+          <li>
+
+            <a href="#fsgx-contact-section">
+              Contact Us
+            </a>
+
+          </li>
+
+
+        </ul>
+
+      </div>
+
+
+
+      <!-- =================================================
+           COLUMN 03 — SERVICES
+      ================================================== -->
+
+      <div class="fsgx-footer-column">
+
+
+        <h3 class="fsgx-footer-heading">
+          Our Services
+        </h3>
+
+
+        <ul class="fsgx-footer-links">
+
+
+          <li>
+
+            <a href="#services">
+              Ocean Freight
+            </a>
+
+          </li>
+
+
+          <li>
+
+            <a href="#services">
+              Air Freight
+            </a>
+
+          </li>
+
+
+          <li>
+
+            <a href="#services">
+              Land Transport
+            </a>
+
+          </li>
+
+
+          <li>
+
+            <a href="#services">
+              Customs Clearance
+            </a>
+
+          </li>
+
+
+          <li>
+
+            <a href="#services">
+              Warehousing & Distribution
+            </a>
+
+          </li>
+
+
+        </ul>
+
+      </div>
+
+
+
+      <!-- =================================================
+           COLUMN 04 — CONTACT
+      ================================================== -->
+
+      <div class="fsgx-footer-column">
+
+
+        <h3 class="fsgx-footer-heading">
+          Contact Us
+        </h3>
+
+
+        <div class="fsgx-footer-contact-list">
+
+
+          <!-- Phone -->
+
+          <a
+            href="tel:+200000000000"
+            class="fsgx-footer-contact-item"
+          >
+
+            <span class="fsgx-footer-contact-icon">
+
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+
+                <path
+                  d="M6.5 3.5
+                     10 7
+                     7.8 9.8
+                     c1.3 2.7
+                     3.5 4.9
+                     6.2 6.2
+                     L16.8 13.8
+                     20.5 17.5
+                     18.3 20
+                     c-.7.8-2 .9-3 .5
+                     C8.8 17.9
+                     6.1 15.2
+                     3.5 8.7
+                     c-.4-1-.3-2.3.5-3z"
+                />
+
+              </svg>
+
+            </span>
+
+
+            <span>
+
+              <small>
+                Phone
+              </small>
+
+              <strong>
+                +201002123456
+              </strong>
+
+            </span>
+
+          </a>
+
+
+
+          <!-- Email -->
+
+          <a
+            href="mailto:fares@frigateshipping.org"
+            class="fsgx-footer-contact-item"
+          >
+
+            <span class="fsgx-footer-contact-icon">
+
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+
+                <rect
+                  x="3"
+                  y="5"
+                  width="18"
+                  height="14"
+                  rx="1"
+                />
+
+                <path
+                  d="m3 6 9 7 9-7"
+                />
+
+              </svg>
+
+            </span>
+
+
+            <span>
+
+              <small>
+                Email
+              </small>
+
+              <strong>
+                fares@frigateshipping.org
+              </strong>
+
+            </span>
+
+          </a>
+
+
+
+          <!-- Location -->
+
+ <a
+  class="fsgx-footer-contact-item fsgx-footer-static"
+  href="https://www.google.com/maps/search/?api=1&query=6+Noah+Afandy+Street,+Sultan+Hussien,+Alexandria,+Egypt"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+
+  <span class="fsgx-footer-contact-icon">
+
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+
+      <path
+        d="M12 21
+           s7-6.2 7-12
+           a7 7 0 1 0-14 0
+           c0 5.8 7 12 7 12z"
+      />
+
+      <circle
+        cx="12"
+        cy="9"
+        r="2.3"
+      />
+
+    </svg>
+
+  </span>
+
+
+  <span>
+
+    <small>
+      Office
+    </small>
+
+    <strong>
+      6 Noah Afandy Street, Sultan Hussien, Alexandria, Egypt.
+    </strong>
+
+  </span>
+
+</a>
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       BOTTOM FOOTER
+  ====================================================== -->
+
+  <div class="fsgx-footer-bottom">
+
+    <div class="fsgx-footer-bottom-inner">
+
+
+      <p>
+
+        © 2026
+        <strong>
+          Frigate Shipping Group
+        </strong>
+        . All Rights Reserved.
+
+      </p>
+
+
+      <div class="fsgx-footer-bottom-right">
+
+        <span>
+          Global Freight & Logistics
+        </span>
+
+        <span class="fsgx-footer-bottom-dot"></span>
+
+        <span>
+          6 Noah afandy street, Sultan hussien, Alexandria. Egypt.
+        </span>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     FRIGATE FOOTER — ISOLATED CSS
+========================================================= -->
+
+<style>
+
+/* =========================================================
+   FOOTER VARIABLES
+========================================================= */
+
+.fsgx-footer {
+
+  --fsgx-footer-blue: #0758c9;
+
+  --fsgx-footer-blue-light: #2b78df;
+
+  --fsgx-footer-dark: #0b1a30;
+
+  --fsgx-footer-dark-2: #10243e;
+
+  --fsgx-footer-text: #a9b7c9;
+
+  --fsgx-footer-border:
+    rgba(255,255,255,.09);
+
+  width: 100%;
+
+  margin: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--fsgx-footer-dark),
+      var(--fsgx-footer-dark-2)
+    );
+
+  color:
+    #ffffff;
+
+  position: relative;
+
+  overflow: hidden;
+
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.fsgx-footer::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 520px;
+
+  height: 520px;
+
+  right: -260px;
+
+  bottom: -320px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(7,88,201,.10);
+
+  pointer-events: none;
+
+}
+
+
+.fsgx-footer::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 380px;
+
+  height: 380px;
+
+  left: -250px;
+
+  top: 100px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(7,88,201,.06);
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================================
+   TOP SHIPPING LINE
+========================================================= */
+
+.fsgx-footer-top-line {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-bottom:
+    1px solid
+    var(--fsgx-footer-border);
+
+}
+
+
+/* =========================================================
+   ROUTE
+========================================================= */
+
+.fsgx-footer-route {
+
+  width: 180px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+}
+
+
+.fsgx-footer-route-dot {
+
+  width: 5px;
+
+  height: 5px;
+
+  flex: 0 0 5px;
+
+  border-radius: 50%;
+
+  background:
+    var(--fsgx-footer-blue-light);
+
+  box-shadow:
+    0 0 10px
+    rgba(43,120,223,.6);
+
+}
+
+
+.fsgx-footer-route-line {
+
+  width: 42px;
+
+  height: 1px;
+
+  border-top:
+    1px dashed
+    rgba(255,255,255,.25);
+
+}
+
+
+.fsgx-footer-route-plane {
+
+  width: 29px;
+
+  height: 29px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(7,88,201,.18);
+
+}
+
+
+.fsgx-footer-route-plane svg {
+
+  width: 16px;
+
+  height: 16px;
+
+  fill: none;
+
+  stroke:
+    #6ca4f3;
+
+  stroke-width: 1.4;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  transform:
+    rotate(-5deg);
+
+}
+
+
+/* =========================================================
+   MAIN FOOTER
+========================================================= */
+
+.fsgx-footer-main {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  padding:
+    65px 5% 55px;
+
+}
+
+
+.fsgx-footer-container {
+
+  width: 100%;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1.5fr
+    .8fr
+    1fr
+    1.15fr;
+
+  gap: 65px;
+
+}
+
+
+/* =========================================================
+   COMPANY
+========================================================= */
+
+.fsgx-footer-company {
+
+  min-width: 0;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.fsgx-footer-logo {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  text-decoration: none;
+
+}
+
+
+.fsgx-footer-logo img {
+
+  width: auto;
+
+  max-width: 190px;
+
+  max-height: 65px;
+
+  display: block;
+
+  object-fit: contain;
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.fsgx-footer-description {
+
+  max-width: 340px;
+
+  margin:
+    22px 0 25px;
+
+  color:
+    var(--fsgx-footer-text);
+
+  font-size: 13px;
+
+  line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   SOCIAL MEDIA
+========================================================= */
+
+.fsgx-footer-socials {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+}
+
+
+.fsgx-footer-social {
+
+  width: 38px;
+
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  border-radius: 9px;
+
+  color:
+    #b7c6d9;
+
+  background:
+    rgba(255,255,255,.035);
+
+  text-decoration: none;
+
+  transition:
+    color .25s ease,
+    background .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+
+}
+
+
+.fsgx-footer-social svg {
+
+  width: 17px;
+
+  height: 17px;
+
+  fill: none;
+
+  stroke:
+    currentColor;
+
+  stroke-width: 1.5;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+}
+
+
+.fsgx-footer-social:hover {
+
+  color:
+    #ffffff;
+
+  background:
+    var(--fsgx-footer-blue);
+
+  border-color:
+    var(--fsgx-footer-blue);
+
+  transform:
+    translateY(-3px);
+
+}
+
+
+/* =========================================================
+   FOOTER COLUMNS
+========================================================= */
+
+.fsgx-footer-column {
+
+  min-width: 0;
+
+}
+
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+.fsgx-footer-heading {
+
+  position: relative;
+
+  margin:
+    0 0 23px;
+
+  padding-bottom: 11px;
+
+  color:
+    #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  letter-spacing: .3px;
+
+}
+
+
+.fsgx-footer-heading::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  bottom: 0;
+
+  width: 28px;
+
+  height: 2px;
+
+  border-radius: 50px;
+
+  background:
+    var(--fsgx-footer-blue-light);
+
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+.fsgx-footer-links {
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+}
+
+
+.fsgx-footer-links a {
+
+  display: inline-block;
+
+  color:
+    var(--fsgx-footer-text);
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+
+  transition:
+    color .25s ease,
+    transform .25s ease;
+
+}
+
+
+.fsgx-footer-links a::before {
+
+  content: "→";
+
+  display: inline-block;
+
+  margin-right: 7px;
+
+  color:
+    var(--fsgx-footer-blue-light);
+
+  opacity: 0;
+
+  transform:
+    translateX(-5px);
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease;
+
+}
+
+
+.fsgx-footer-links a:hover {
+
+  color:
+    #ffffff;
+
+  transform:
+    translateX(3px);
+
+}
+
+
+.fsgx-footer-links a:hover::before {
+
+  opacity: 1;
+
+  transform:
+    translateX(0);
+
+}
+
+
+/* =========================================================
+   CONTACT LIST
+========================================================= */
+
+.fsgx-footer-contact-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 19px;
+
+}
+
+
+/* =========================================================
+   CONTACT ITEM
+========================================================= */
+
+.fsgx-footer-contact-item {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 12px;
+
+  color:
+    inherit;
+
+  text-decoration: none;
+
+}
+
+
+.fsgx-footer-contact-icon {
+
+  width: 37px;
+
+  height: 37px;
+
+  flex: 0 0 37px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 9px;
+
+  color:
+    #6ca4f3;
+
+  background:
+    rgba(7,88,201,.13);
+
+  transition:
+    background .25s ease,
+    color .25s ease;
+
+}
+
+
+.fsgx-footer-contact-item:hover
+.fsgx-footer-contact-icon {
+
+  color:
+    #ffffff;
+
+  background:
+    var(--fsgx-footer-blue);
+
+}
+
+
+.fsgx-footer-contact-icon svg {
+
+  width: 18px;
+
+  height: 18px;
+
+  fill: none;
+
+  stroke:
+    currentColor;
+
+  stroke-width: 1.5;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+}
+
+
+/* =========================================================
+   CONTACT TEXT
+========================================================= */
+
+.fsgx-footer-contact-item > span:last-child {
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+}
+
+
+.fsgx-footer-contact-item small {
+
+  color:
+    #71839a;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+
+}
+
+
+.fsgx-footer-contact-item strong {
+
+  color:
+    #dce5ef;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+
+}
+
+
+.fsgx-footer-static {
+
+  cursor: default;
+
+}
+
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+.fsgx-footer-bottom {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  border-top:
+    1px solid
+    var(--fsgx-footer-border);
+
+}
+
+
+.fsgx-footer-bottom-inner {
+
+  width: 100%;
+
+  max-width: 1250px;
+
+  min-height: 65px;
+
+  margin: 0 auto;
+
+  padding:
+    0 5%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+}
+
+
+.fsgx-footer-bottom p {
+
+  margin: 0;
+
+  color:
+    #71839a;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+
+}
+
+
+.fsgx-footer-bottom p strong {
+
+  color:
+    #aebdce;
+
+  font-weight: 700;
+
+}
+
+
+.fsgx-footer-bottom-right {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  color:
+    #71839a;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: .3px;
+
+}
+
+
+.fsgx-footer-bottom-dot {
+
+  width: 4px;
+
+  height: 4px;
+
+  border-radius: 50%;
+
+  background:
+    var(--fsgx-footer-blue-light);
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .fsgx-footer-container {
+
+    grid-template-columns:
+      1.3fr
+      1fr
+      1fr;
+
+    gap: 45px;
+
+  }
+
+
+  .fsgx-footer-company {
+
+    grid-column:
+      1 / -1;
+
+  }
+
+
+  .fsgx-footer-description {
+
+    max-width: 500px;
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .fsgx-footer-top-line {
+
+    height: 45px;
+
+  }
+
+
+  .fsgx-footer-route {
+
+    transform:
+      scale(.85);
+
+  }
+
+
+  .fsgx-footer-main {
+
+    padding:
+      45px 20px 40px;
+
+  }
+
+
+  .fsgx-footer-container {
+
+    grid-template-columns:
+      1fr;
+
+    gap: 38px;
+
+  }
+
+
+  .fsgx-footer-company {
+
+    grid-column:
+      auto;
+
+  }
+
+
+  .fsgx-footer-logo img {
+
+    max-width: 165px;
+
+  }
+
+
+  .fsgx-footer-description {
+
+    margin-top: 18px;
+
+    font-size: 12px;
+
+    line-height: 1.75;
+
+  }
+
+
+  .fsgx-footer-heading {
+
+    margin-bottom: 18px;
+
+  }
+
+
+  .fsgx-footer-links {
+
+    gap: 10px;
+
+  }
+
+
+  .fsgx-footer-links a {
+
+    font-size: 12px;
+
+  }
+
+
+  .fsgx-footer-contact-list {
+
+    gap: 16px;
+
+  }
+
+
+  .fsgx-footer-bottom-inner {
+
+    min-height: auto;
+
+    padding:
+      20px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+  }
+
+
+  .fsgx-footer-bottom-right {
+
+    flex-wrap: wrap;
+
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .fsgx-footer-main {
+
+    padding-left: 16px;
+
+    padding-right: 16px;
+
+  }
+
+
+  .fsgx-footer-bottom-inner {
+
+    padding-left: 16px;
+
+    padding-right: 16px;
+
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .fsgx-footer *,
+  .fsgx-footer *::before,
+  .fsgx-footer *::after {
+
+    transition: none !important;
+
+  }
+
+}
+
+</style>
+    <script>
+      // Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.14 },
+      );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      // Counter animation
+      const counters = document.querySelectorAll(".stat-number[data-target]");
+      let counted = false;
+
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          if (!entries[0].isIntersecting || counted) return;
+          counted = true;
+
+          counters.forEach((counter) => {
+            const target = Number(counter.dataset.target);
+            const duration = 1300;
+            const start = performance.now();
+
+            function tick(now) {
+              const progress = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              counter.textContent = Math.floor(target * eased) + "+";
+              if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+          });
+        },
+        { threshold: 0.7 },
+      );
+
+      if (counters.length)
+        statsObserver.observe(document.querySelector(".stats"));
+    </script>
+  </body>
+</html>
